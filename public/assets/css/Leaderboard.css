@@ -1,0 +1,822 @@
+.ecran-de-desktop {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1440px;
+  min-height: 1024px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecran-de-desktop .header {
+  display: inline-flex;
+  width: 1440px;
+  height: 99px;
+  position: relative;
+  align-items: flex-start;
+}
+
+.ecran-de-desktop .div {
+  flex-wrap: wrap;
+  width: 1440px;
+  gap: var(--size-space-600);
+  padding: var(--size-space-800);
+  background-color: var(--color-background-positive-default);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--color-border-default-default);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.ecran-de-desktop .block {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ecran-de-desktop .figma {
+  display: flex;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ecran-de-desktop .icon {
+  position: relative;
+  width: 26.83px;
+  height: 38.5px;
+  margin-top: -1.75px;
+  margin-bottom: -1.75px;
+}
+
+.ecran-de-desktop .navigation-pill-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--size-space-200);
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ecran-de-desktop .header-auth {
+  justify-content: flex-end;
+  gap: var(--size-space-300);
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.ecran-de-desktop .button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: var(--size-space-200);
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--color-background-brand-default);
+  border-radius: var(--size-radius-200);
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--color-border-brand-default);
+}
+
+.ecran-de-desktop .user {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: var(--color-text-brand-on-brand);
+  font-size: var(--single-line-body-base-font-size);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .body {
+  margin-left: 273px;
+  width: 940px;
+  height: 672px;
+  position: relative;
+  margin-top: 47px;
+}
+
+.ecran-de-desktop .component {
+  position: absolute;
+  width: 100%;
+  height: 75.89%;
+  top: 24.11%;
+  left: 0;
+}
+
+.ecran-de-desktop .top {
+  position: absolute;
+  width: 100%;
+  height: 68.63%;
+  top: 31.37%;
+  left: 0;
+}
+
+.ecran-de-desktop .rectangle {
+  top: 0;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-2 {
+  top: 0;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-3 {
+  top: 250px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-4 {
+  top: 300px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-5 {
+  top: 200px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-6 {
+  top: 150px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-7 {
+  top: 100px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-8 {
+  top: 50px;
+  left: 0;
+  width: 53px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-9 {
+  top: 250px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-10 {
+  top: 300px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-11 {
+  top: 200px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-12 {
+  top: 150px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-13 {
+  top: 100px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .rectangle-14 {
+  top: 50px;
+  left: 53px;
+  width: 887px;
+  position: absolute;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #010101;
+}
+
+.ecran-de-desktop .text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-2 {
+  top: 300px;
+  left: 1px;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-3 {
+  top: 251px;
+  left: 1px;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-4 {
+  top: 200px;
+  left: 1px;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-5 {
+  top: 151px;
+  left: 0;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-6 {
+  top: 101px;
+  left: 0;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .text-wrapper-7 {
+  top: 51px;
+  left: 0;
+  position: absolute;
+  width: 52px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  text-align: center;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+}
+
+.ecran-de-desktop .podium {
+  position: absolute;
+  width: 51.70%;
+  height: 27.65%;
+  top: 0;
+  left: 26.91%;
+  display: flex;
+}
+
+.ecran-de-desktop .place {
+  margin-top: 15px;
+  width: 90px;
+  margin-left: 36px;
+  background-color: #c4c2c7;
+  height: 162px;
+  border: 1px solid;
+  border-color: #010101;
+  transform: rotate(-90deg);
+}
+
+.ecran-de-desktop .place-2 {
+  margin-top: -10.5px;
+  width: 141px;
+  margin-left: 46.5px;
+  background-color: #e5e500;
+  height: 162px;
+  border: 1px solid;
+  border-color: #010101;
+  transform: rotate(-90deg);
+}
+
+.ecran-de-desktop .place-3 {
+  margin-top: 30.5px;
+  width: 59px;
+  margin-left: 62px;
+  background-color: #d88908;
+  height: 162px;
+  border: 1px solid;
+  border-color: #010101;
+  transform: rotate(-90deg);
+}
+
+.ecran-de-desktop .bouton-recherche {
+  position: absolute;
+  top: 87px;
+  left: 855px;
+  width: 85px;
+  height: 58px;
+}
+
+.ecran-de-desktop .text-wrapper-8 {
+  position: absolute;
+  width: 905.88%;
+  height: 200%;
+  top: -150.00%;
+  left: -905.88%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 48px;
+}
+
+.ecran-de-desktop .rectangle-15 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fffcfc;
+  border: 1px solid;
+  border-color: #000000;
+}
+
+.ecran-de-desktop .image {
+  position: absolute;
+  top: 90px;
+  left: 868px;
+  width: 59px;
+  height: 52px;
+  aspect-ratio: 1.14;
+  object-fit: cover;
+}
+
+.ecran-de-desktop .footer {
+  display: flex;
+  margin-left: 0;
+  width: 1440px;
+  height: 170px;
+  position: relative;
+  margin-top: 36.0px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--size-space-400);
+  padding: var(--size-space-800) var(--size-space-800) 32px
+    var(--size-space-800);
+  background-color: var(--color-background-default-default);
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-color: var(--color-border-default-default);
+  transform: rotate(0.18deg);
+}
+
+.ecran-de-desktop .title {
+  position: relative;
+  width: 263.84px;
+  margin-top: -2.13px;
+  margin-left: -1.71px;
+  transform: rotate(-0.18deg);
+}
+
+.ecran-de-desktop .text-link-list {
+  display: flex;
+  flex-direction: column;
+  width: 262px;
+  align-items: flex-start;
+  gap: var(--size-space-300);
+  position: relative;
+}
+
+.ecran-de-desktop .text-strong-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0px 0px var(--size-space-400) 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.ecran-de-desktop .text-strong {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.ecran-de-desktop .text-strong-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--body-strong-font-family);
+  font-weight: var(--body-strong-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-strong-font-size);
+  letter-spacing: var(--body-strong-letter-spacing);
+  line-height: var(--body-strong-line-height);
+  white-space: nowrap;
+  font-style: var(--body-strong-font-style);
+}
+
+.ecran-de-desktop .text-link-list-item {
+  position: relative;
+  width: 89px;
+  height: 22px;
+}
+
+.ecran-de-desktop .list-item {
+  position: absolute;
+  width: 142.70%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-base-font-family);
+  font-weight: var(--body-base-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-base-font-size);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--body-base-font-style);
+}
+
+.ecran-de-desktop .list-item-2 {
+  width: 113.48%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-base-font-family);
+  font-weight: var(--body-base-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-base-font-size);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--body-base-font-style);
+}
+
+.ecran-de-desktop .list-item-3 {
+  width: 86.52%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-base-font-family);
+  font-weight: var(--body-base-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-base-font-size);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--body-base-font-style);
+}
+
+.ecran-de-desktop .list-item-4 {
+  width: 124.72%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-base-font-family);
+  font-weight: var(--body-base-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-base-font-size);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--body-base-font-style);
+}
+
+.ecran-de-desktop .list-item-5 {
+  width: 98.88%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-base-font-family);
+  font-weight: var(--body-base-font-weight);
+  color: var(--color-text-default-default);
+  font-size: var(--body-base-font-size);
+  letter-spacing: var(--body-base-letter-spacing);
+  line-height: var(--body-base-line-height);
+  white-space: nowrap;
+  font-style: var(--body-base-font-style);
+}
+/* INJECT ORIGINAL CSS CODE HERE */
+
+.ecran-de-desktop .leaderboard-row {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(1) {
+  top: 0;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(2) {
+  top: 50px;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(3) {
+  top: 100px;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(4) {
+  top: 150px;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(5) {
+  top: 200px;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(6) {
+  top: 250px;
+}
+
+.ecran-de-desktop .leaderboard-row:nth-child(7) {
+  top: 300px;
+}
+
+.ecran-de-desktop .leaderboard-rank {
+  width: 53px;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid #010101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ecran-de-desktop .leaderboard-content {
+  flex: 1;
+  height: 50px;
+  background-color: #fafafa;
+  border: 1px solid #010101;
+  border-left: none;
+}
+
+.ecran-de-desktop .footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-space-300);
+}
+
+.ecran-de-desktop .footer-list .text-link-list-item {
+  width: auto;
+  height: auto;
+}
+
+.ecran-de-desktop .list-item,
+.ecran-de-desktop .list-item-2,
+.ecran-de-desktop .list-item-3,
+.ecran-de-desktop .list-item-4,
+.ecran-de-desktop .list-item-5 {
+  position: static;
+  width: auto;
+  height: auto;
+  display: inline;
+  text-decoration: none;
+  color: var(--color-text-default-default);
+}
+
+.ecran-de-desktop .list-item:hover,
+.ecran-de-desktop .list-item-2:hover,
+.ecran-de-desktop .list-item-3:hover,
+.ecran-de-desktop .list-item-4:hover,
+.ecran-de-desktop .list-item-5:hover {
+  text-decoration: underline;
+}
+
+.ecran-de-desktop .bouton-recherche {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.ecran-de-desktop .text-wrapper-8 {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.ecran-de-desktop .rectangle-15 {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  width: 85px;
+  height: 58px;
+  top: 87px;
+  left: 855px;
+  background-color: #fffcfc;
+  border: 1px solid #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.ecran-de-desktop .rectangle-15:hover {
+  background-color: #f0f0f0;
+}
+
+.ecran-de-desktop .rectangle-15:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.ecran-de-desktop .rectangle-15 .image {
+  position: static;
+  width: 59px;
+  height: 52px;
+  margin: 0;
+}
