@@ -153,6 +153,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--size-space-400);
+    border-radius: 15px;
 }
 
 .auth-section h1 {
