@@ -1,5 +1,5 @@
 
-.ecran-de-desktop .footer {
+.footer {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -20,7 +20,7 @@
   transform: rotate(0.18deg);
 }
 
-.ecran-de-desktop .title {
+.title {
   position: relative;
   width: 9rem;
   height: auto;
@@ -29,7 +29,7 @@
   transform: rotate(-0.18deg);
 }
 
-.ecran-de-desktop .text-link-list {
+.text-link-list {
   display: flex;
   flex-direction: column;
   width: 262px;
@@ -38,19 +38,19 @@
   position: relative;
 }
 
-.ecran-de-desktop .text-strong-wrapper {
+.text-strong-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  padding: 0px 0px var(--size-space-400) 0px;
+  padding: 0 0 var(--size-space-400) 0;
   position: relative;
   align-self: stretch;
   width: 100%;
   flex: 0 0 auto;
 }
 
-.ecran-de-desktop .text-strong {
+.text-strong {
   display: flex;
   align-items: flex-start;
   position: relative;
@@ -59,11 +59,11 @@
   flex: 0 0 auto;
 }
 
-.ecran-de-desktop .text-strong-2 {
+.text-strong-2 {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: var(--body-strong-font-family);
+  font-family: var(--body-strong-font-family), serif;
   font-weight: var(--body-strong-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-strong-font-size);
@@ -73,13 +73,13 @@
   font-style: var(--body-strong-font-style);
 }
 
-.ecran-de-desktop .text-link-list-item {
+.text-link-list-item {
   position: relative;
   width: 89px;
   height: 22px;
 }
 
-.ecran-de-desktop .list-item {
+.list-item {
   position: absolute;
   width: 142.70%;
   height: 100%;
@@ -88,7 +88,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--body-base-font-family);
+  font-family: var(--body-base-font-family), serif;
   font-weight: var(--body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-base-font-size);
@@ -99,16 +99,16 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .list-item:hover {
+.list-item:hover {
   text-decoration: underline;
 }
 
-.ecran-de-desktop .list-item:focus {
+.list-item:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .list-item-2 {
+.list-item-2 {
   width: 113.48%;
   position: absolute;
   height: 100%;
@@ -117,7 +117,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--body-base-font-family);
+  font-family: var(--body-base-font-family), serif;
   font-weight: var(--body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-base-font-size);
@@ -128,16 +128,16 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .list-item-2:hover {
+.list-item-2:hover {
   text-decoration: underline;
 }
 
-.ecran-de-desktop .list-item-2:focus {
+.list-item-2:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .list-item-3 {
+.list-item-3 {
   width: 86.52%;
   position: absolute;
   height: 100%;
@@ -146,7 +146,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--body-base-font-family);
+  font-family: var(--body-base-font-family), serif;
   font-weight: var(--body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-base-font-size);
@@ -157,16 +157,16 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .list-item-3:hover {
+.list-item-3:hover {
   text-decoration: underline;
 }
 
-.ecran-de-desktop .list-item-3:focus {
+.list-item-3:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .list-item-4 {
+.list-item-4 {
   width: 124.72%;
   position: absolute;
   height: 100%;
@@ -175,7 +175,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--body-base-font-family);
+  font-family: var(--body-base-font-family), serif;
   font-weight: var(--body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-base-font-size);
@@ -186,16 +186,16 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .list-item-4:hover {
+.list-item-4:hover {
   text-decoration: underline;
 }
 
-.ecran-de-desktop .list-item-4:focus {
+.list-item-4:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .list-item-5 {
+.list-item-5 {
   width: 98.88%;
   position: absolute;
   height: 100%;
@@ -204,7 +204,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--body-base-font-family);
+  font-family: var(--body-base-font-family), serif;
   font-weight: var(--body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--body-base-font-size);
@@ -215,11 +215,11 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .list-item-5:hover {
+.list-item-5:hover {
   text-decoration: underline;
 }
 
-.ecran-de-desktop .list-item-5:focus {
+.list-item-5:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }

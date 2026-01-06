@@ -1,5 +1,4 @@
-.ecran-de-desktop .header {
-  flex : 1;
+.header {
   display: flex;
   width: 100%;
   flex: 0 0 auto;
@@ -8,7 +7,7 @@
   position: relative;
 }
 
-.ecran-de-desktop .header-2 {
+.header-2 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -26,7 +25,7 @@
   border-color: var(--color-border-default-default);
 }
 
-.ecran-de-desktop .block {
+.block {
   display: inline-flex;
   align-items: center;
   gap: 24px;
@@ -34,7 +33,7 @@
   flex: 0 0 auto;
 }
 
-.ecran-de-desktop .Osmose {
+.Osmose {
   display: flex;
   width: 40px;
   align-items: center;
@@ -43,25 +42,25 @@
   text-decoration: none;
 }
 
-.ecran-de-desktop .icon {
+.icon {
   position: relative;
-  width: 26.83px;
-  height: 38.5px;
+  width: 62px;
+  height: 50px;
+  border-radius: 40%;
   margin-top: -1.75px;
   margin-bottom: -1.75px;
 }
 
-.ecran-de-desktop .header-auth {
+.header-auth {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: var(--size-space-300);
   position: relative;
   flex: 1;
-  flex-grow: 1;
 }
 
-.ecran-de-desktop .button {
+.button {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -79,20 +78,20 @@
   cursor: pointer;
 }
 
-.ecran-de-desktop .button:hover {
+.button:hover {
   background-color: var(--color-background-neutral-tertiary-hover);
 }
 
-.ecran-de-desktop .button:focus {
+.button:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .text-wrapper {
+.text-wrapper {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: var(--single-line-body-base-font-family);
+  font-family: var(--single-line-body-base-font-family), serif;
   font-weight: var(--single-line-body-base-font-weight);
   color: var(--color-text-default-default);
   font-size: var(--single-line-body-base-font-size);
@@ -102,7 +101,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .div {
+.div {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -120,20 +119,20 @@
   cursor: pointer;
 }
 
-.ecran-de-desktop .div:hover {
+.div:hover {
   background-color: var(--color-background-brand-hover);
 }
 
-.ecran-de-desktop .div:focus {
+.div:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.ecran-de-desktop .button-2 {
+.button-2 {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: var(--single-line-body-base-font-family);
+  font-family: var(--single-line-body-base-font-family), serif;
   font-weight: var(--single-line-body-base-font-weight);
   color: var(--color-text-brand-on-brand);
   font-size: var(--single-line-body-base-font-size);
