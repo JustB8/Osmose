@@ -1,4 +1,4 @@
-.ecran-de-desktop .component {
+.component {
   margin-left: 96px;
   width: 1291px;
   height: 595px;
@@ -6,21 +6,21 @@
   margin-top: 17px;
 }
 
-.ecran-de-desktop .points-section {
+.points-section {
   position: absolute;
   width: 11.15%;
   top: 0;
   left: 75.45%;
 }
 
-.ecran-de-desktop .points-section-user {
+.points-section-user {
   position: absolute;
   width: 11.15%;
   top: 0;
   left: 88.85%;
 }
 
-.ecran-de-desktop .rectangle {
+.rectangle {
   position: absolute;
   width: 100%;
   height: 8.74%;
@@ -30,7 +30,7 @@
   border-color: #25e422;
 }
 
-.ecran-de-desktop .text-wrapper {
+.text-wrapper {
   position: absolute;
   width: 100%;
   height: 8.74%;
@@ -49,7 +49,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .rectangle-2 {
+.rectangle-2 {
   position: absolute;
   width: 100%;
   height: 8.74%;
@@ -59,7 +59,7 @@
   border-color: #223ce4;
 }
 
-.ecran-de-desktop .text-wrapper-2 {
+.text-wrapper-2 {
   position: absolute;
   width: 100%;
   height: 8.74%;
@@ -78,7 +78,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .p {
+.p {
   left: 0;
   position: absolute;
   width: 100%;
@@ -97,7 +97,7 @@
   margin: 0;
 }
 
-.ecran-de-desktop .text-wrapper-3 {
+.text-wrapper-3 {
   left: 0;
   position: absolute;
   width: 100%;
@@ -116,7 +116,7 @@
   margin: 0;
 }
 
-.ecran-de-desktop .rectangle-3 {
+.rectangle-3 {
   position: absolute;
   width: 60.26%;
   height: 28.07%;
@@ -125,7 +125,7 @@
   background-color: #47c262;
 }
 
-.ecran-de-desktop .rectangle-4 {
+.rectangle-4 {
   position: absolute;
   width: 60.26%;
   height: 28.07%;
@@ -134,7 +134,7 @@
   background-color: #48c363;
 }
 
-.ecran-de-desktop .text-wrapper-4 {
+.text-wrapper-4 {
   width: 26.6%;
   top: 0;
   position: absolute;
@@ -153,7 +153,7 @@
   margin: 0;
 }
 
-.ecran-de-desktop .text-wrapper-5 {
+.text-wrapper-5 {
   width: 31.2%;
   top: 0;
   position: absolute;
@@ -172,7 +172,7 @@
   margin: 0;
 }
 
-.ecran-de-desktop .text-wrapper-6 {
+.text-wrapper-6 {
   position: absolute;
   width: 91.9%;
   height: 7.39%;
@@ -192,7 +192,7 @@
   margin: 0;
 }
 
-.ecran-de-desktop .text-wrapper-7 {
+.text-wrapper-7 {
   position: absolute;
   width: 91.9%;
   height: 7.39%;
