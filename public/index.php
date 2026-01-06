@@ -1,3 +1,5 @@
+<?php
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -5,16 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Osmose - Accueil</title>
-    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
     <link rel="stylesheet" href="./assets/css/footer.css"/>
-    <script src="./assets/js/index.js" defer async></script>
-    <script src="./assets/js/composents.js"></script>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <script src="assets/js/index.js" defer async></script>
+    <script src="assets/js/composents.js"></script>
   </head>
   <body>
-    <div class="ecran-de-desktop">
       <main-header></main-header>
       <main class="body">
         <h1 class="text-title-hero">
@@ -45,6 +46,5 @@
         <div class="rectangle" role="presentation"></div>
       </main>
       <main-footer></main-footer>
-    </div>
   </body>
 </html>
