@@ -1,13 +1,12 @@
 
-.ecran-de-desktop .body {
+.body {
   margin-left: 273px;
   width: 940px;
   height: 672px;
   position: relative;
   margin-top: 47px;
 }
-
-.ecran-de-desktop .component {
+.component {
   position: absolute;
   width: 100%;
   height: 75.89%;
@@ -15,7 +14,7 @@
   left: 0;
 }
 
-.ecran-de-desktop .top {
+.top {
   position: absolute;
   width: 100%;
   height: 68.63%;
@@ -23,7 +22,7 @@
   left: 0;
 }
 
-.ecran-de-desktop .rectangle {
+.rectangle {
   top: 0;
   left: 53px;
   width: 887px;
@@ -34,7 +33,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-2 {
+.rectangle-2 {
   top: 0;
   left: 0;
   width: 53px;
@@ -45,7 +44,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-3 {
+.rectangle-3 {
   top: 250px;
   left: 0;
   width: 53px;
@@ -56,7 +55,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-4 {
+.rectangle-4 {
   top: 300px;
   left: 0;
   width: 53px;
@@ -67,7 +66,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-5 {
+.rectangle-5 {
   top: 200px;
   left: 0;
   width: 53px;
@@ -78,7 +77,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-6 {
+.rectangle-6 {
   top: 150px;
   left: 0;
   width: 53px;
@@ -89,7 +88,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-7 {
+.rectangle-7 {
   top: 100px;
   left: 0;
   width: 53px;
@@ -100,7 +99,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-8 {
+.rectangle-8 {
   top: 50px;
   left: 0;
   width: 53px;
@@ -111,7 +110,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-9 {
+.rectangle-9 {
   top: 250px;
   left: 53px;
   width: 887px;
@@ -122,7 +121,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-10 {
+.rectangle-10 {
   top: 300px;
   left: 53px;
   width: 887px;
@@ -133,7 +132,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-11 {
+.rectangle-11 {
   top: 200px;
   left: 53px;
   width: 887px;
@@ -144,7 +143,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-12 {
+.rectangle-12 {
   top: 150px;
   left: 53px;
   width: 887px;
@@ -155,7 +154,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-13 {
+.rectangle-13 {
   top: 100px;
   left: 53px;
   width: 887px;
@@ -166,7 +165,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .rectangle-14 {
+.rectangle-14 {
   top: 50px;
   left: 53px;
   width: 887px;
@@ -177,7 +176,7 @@
   border-color: #010101;
 }
 
-.ecran-de-desktop .text-wrapper-1 {
+.text-wrapper-1 {
   position: absolute;
   top: 0;
   left: 1px;
@@ -196,7 +195,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-2 {
+.text-wrapper-2 {
   top: 300px;
   left: 1px;
   position: absolute;
@@ -215,7 +214,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-3 {
+.text-wrapper-3 {
   top: 251px;
   left: 1px;
   position: absolute;
@@ -234,7 +233,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-4 {
+.text-wrapper-4 {
   top: 200px;
   left: 1px;
   position: absolute;
@@ -253,7 +252,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-5 {
+.text-wrapper-5 {
   top: 151px;
   left: 0;
   position: absolute;
@@ -272,7 +271,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-6 {
+.text-wrapper-6 {
   top: 101px;
   left: 0;
   position: absolute;
@@ -291,7 +290,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .text-wrapper-7 {
+.text-wrapper-7 {
   top: 51px;
   left: 0;
   position: absolute;
@@ -310,7 +309,7 @@
   font-style: var(--single-line-body-base-font-style);
 }
 
-.ecran-de-desktop .podium {
+.podium {
   position: absolute;
   width: 51.70%;
   height: 27.65%;
@@ -319,7 +318,7 @@
   display: flex;
 }
 
-.ecran-de-desktop .place {
+.place {
   margin-top: 15px;
   width: 90px;
   margin-left: 36px;
@@ -330,7 +329,7 @@
   transform: rotate(-90deg);
 }
 
-.ecran-de-desktop .place-2 {
+.place-2 {
   margin-top: -10.5px;
   width: 141px;
   margin-left: 46.5px;
@@ -341,7 +340,7 @@
   transform: rotate(-90deg);
 }
 
-.ecran-de-desktop .place-3 {
+.place-3 {
   margin-top: 30.5px;
   width: 59px;
   margin-left: 62px;
@@ -352,7 +351,7 @@
   transform: rotate(-90deg);
 }
 
-.ecran-de-desktop .bouton-recherche {
+.bouton-recherche {
   position: absolute;
   top: 87px;
   left: 855px;
@@ -360,7 +359,7 @@
   height: 58px;
 }
 
-.ecran-de-desktop .text-wrapper-8 {
+.text-wrapper-8 {
   position: absolute;
   width: 905.88%;
   height: 200%;
@@ -378,7 +377,7 @@
   line-height: 48px;
 }
 
-.ecran-de-desktop .rectangle-15 {
+.rectangle-15 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -389,7 +388,7 @@
   border-color: #000000;
 }
 
-.ecran-de-desktop .image {
+.image {
   position: absolute;
   top: 90px;
   left: 868px;
