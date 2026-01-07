@@ -3,11 +3,17 @@ class MyHeader extends HTMLElement {
         if (window.IS_LOGGED) {
             this.innerHTML = `
             <div class="header">
-                <header class="header-2">
-                    <img class="icon" src="img/logo.svg" alt="Logo du site" />
-                    <nav class="header-auth">
-                        <a href="profil.php" class="button">Mon profil</a>
-                        <a href="logout.php" class="button">Déconnexion</a>
+                <header class="header-2">  
+                    <div class="icon_container">
+                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                    </div>
+                    <nav class="header-auth" aria-label="Navigation principale">
+                        <button class="div" type="button">
+                            <span class="button-2">Mon profil</span>
+                        </button>
+                        <button class="button" type="button">
+                            <span class="text-wrapper">Déconnexion</span>
+                        </button>
                     </nav>
                 </header>
             </div>
@@ -16,15 +22,17 @@ class MyHeader extends HTMLElement {
             this.innerHTML = `
             <div class="header">
                 <header class="header-2">  
-                <img class="icon" src="img/logo.svg" alt="Logo du site" />
-                <nav class="header-auth" aria-label="Navigation principale">
-                    <button class="button" type="button">
-                        <span class="text-wrapper">Créer un compte</span>
-                    </button>
-                    <button class="div" type="button">
-                        <span class="button-2">Connexion</span>
-                    </button>
-                </nav>
+                    <div class="icon_container">
+                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                    </div>
+                    <nav class="header-auth" aria-label="Navigation principale">
+                        <button class="button" type="button">
+                            <span class="text-wrapper">Créer un compte</span>
+                        </button>
+                        <button class="div" type="button">
+                            <span class="button-2">Connexion</span>
+                        </button>
+                    </nav>
                 </header>
             </div>
             `;
@@ -45,10 +53,10 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="profil.php" class="button">Mon profil</a>
+                        <a href="#" class="list-item">Mon profil</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="logout.php" class="button">Déconnexion</a>
+                        <a href="#" class="list-item-2">Déconnexion</a>
                     </div>
                 </nav>
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
