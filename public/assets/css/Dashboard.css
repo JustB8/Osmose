@@ -1,213 +1,66 @@
+/* --- Conteneur Principal --- */
 .component {
-  margin-left: 96px;
-  width: 1291px;
-  height: 595px;
-  position: relative;
-  margin-top: 17px;
+  display: flex;
+  flex-direction: column; /* Organise le contenu de haut en bas */
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1; /* Remplit l'espace vertical disponible */
 }
 
-.points-section {
-  position: absolute;
-  width: 11.15%;
-  top: 0;
-  left: 75.45%;
+.points {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
 }
 
+/* --- Ligne du haut (Points) --- */
+/* On crée un conteneur pour aligner les deux sections de points à droite */
+.top-row {
+  display: flex;
+  justify-content: flex-end; /* Pousse les éléments vers la droite */
+  gap: 20px;
+  width: 100%;
+}
+
+.points-section, 
 .points-section-user {
-  position: absolute;
-  width: 11.15%;
-  top: 0;
-  left: 88.85%;
-}
-
-.rectangle {
-  position: absolute;
-  width: 100%;
-  height: 8.74%;
-  top: 9.92%;
-  left: 0;
-  border: 4px solid;
-  border-color: #25e422;
-}
-
-.text-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 8.74%;
-  top: 9.92%;
-  left: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-family: var(--single-line-body-base-font-family);
-  font-weight: var(--single-line-body-base-font-weight);
-  color: #000000;
-  font-size: var(--single-line-body-base-font-size);
-  text-align: center;
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  font-style: var(--single-line-body-base-font-style);
+  width: 200px; /* Largeur fixe pour ces petits blocs */
 }
 
-.rectangle-2 {
-  position: absolute;
-  width: 100%;
-  height: 8.74%;
-  top: 9.92%;
-  left: 0;
-  border: 4px solid;
-  border-color: #223ce4;
-}
-
-.text-wrapper-2 {
-  position: absolute;
-  width: 100%;
-  height: 8.74%;
-  top: 9.92%;
-  left: 0;
+/* --- Ligne du bas (Articles/Activités) --- */
+.bottom-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--single-line-body-base-font-family);
-  font-weight: var(--single-line-body-base-font-weight);
-  color: #000000;
-  font-size: var(--single-line-body-base-font-size);
-  text-align: center;
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  font-style: var(--single-line-body-base-font-style);
-}
-
-.p {
-  left: 0;
-  position: absolute;
+  flex-direction: row; /* Aligne les articles côte à côte */
+  flex-wrap: wrap;     /* Permet de passer à la ligne sur petit écran */
+  gap: 20px;
   width: 100%;
-  height: 9.92%;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 10px;
-  margin: 0;
 }
 
-.text-wrapper-3 {
-  left: 0;
-  position: absolute;
-  width: 100%;
-  height: 9.92%;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 10px;
-  margin: 0;
-}
-
-.rectangle-3 {
-  position: absolute;
-  width: 60.26%;
-  height: 28.07%;
-  top: 36.81%;
-  left: 0;
-  background-color: #47c262;
-}
-
+.rectangle-3, 
 .rectangle-4 {
-  position: absolute;
-  width: 60.26%;
-  height: 28.07%;
-  top: 71.93%;
-  left: 0;
-  background-color: #48c363;
+  flex: 1;            /* Chaque bloc prend une part égale de l'espace */
+  min-width: 500px;   /* Taille minimum avant de passer à la ligne */
+  background-color: #fafafa;
+  border: 1px solid #010101;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin : 5px;
 }
 
-.text-wrapper-4 {
-  width: 26.6%;
-  top: 0;
-  position: absolute;
-  height: 7.39%;
-  left: 0;
+/* --- Éléments internes (Texte et Rectangles de points) --- */
+.rectangle, .rectangle-2 {
+  width: 100%;
+  height: 50px;
+  border: 4px solid #25e422;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 24px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 24px;
-  margin: 0;
-}
-
-.text-wrapper-5 {
-  width: 31.2%;
-  top: 0;
-  position: absolute;
-  height: 7.39%;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 24px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 24px;
-  margin: 0;
-}
-
-.text-wrapper-6 {
-  position: absolute;
-  width: 91.9%;
-  height: 7.39%;
-  top: 43.5%;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 40px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 40px;
-  white-space: nowrap;
-  margin: 0;
-}
-
-.text-wrapper-7 {
-  position: absolute;
-  width: 91.9%;
-  height: 7.39%;
-  top: 42.8%;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 40px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 40px;
-  white-space: nowrap;
-  margin: 0;
 }
