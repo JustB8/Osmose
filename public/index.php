@@ -1,4 +1,6 @@
 <?php
+session_start();
+$isLogged = isset($_SESSION['user']);
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +14,9 @@
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
     <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/index.css" />
+    <script>
+      window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
+    </script>
     <script src="assets/js/index.js" defer async></script>
     <script src="assets/js/composents.js"></script>
   </head>
