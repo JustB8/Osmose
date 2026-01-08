@@ -1,0 +1,66 @@
+/* --- Conteneur Principal --- */
+.component {
+  display: flex;
+  flex-direction: column; /* Organise le contenu de haut en bas */
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1; /* Remplit l'espace vertical disponible */
+}
+
+.points {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+
+/* --- Ligne du haut (Points) --- */
+/* On crée un conteneur pour aligner les deux sections de points à droite */
+.top-row {
+  display: flex;
+  justify-content: flex-end; /* Pousse les éléments vers la droite */
+  gap: 20px;
+  width: 100%;
+}
+
+.points-section, 
+.points-section-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; /* Largeur fixe pour ces petits blocs */
+}
+
+/* --- Ligne du bas (Articles/Activités) --- */
+.bottom-row {
+  display: flex;
+  flex-direction: row; /* Aligne les articles côte à côte */
+  flex-wrap: wrap;     /* Permet de passer à la ligne sur petit écran */
+  gap: 20px;
+  width: 100%;
+}
+
+.rectangle-3, 
+.rectangle-4 {
+  flex: 1;            /* Chaque bloc prend une part égale de l'espace */
+  min-width: 500px;   /* Taille minimum avant de passer à la ligne */
+  background-color: #fafafa;
+  border: 1px solid #010101;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin : 5px;
+}
+
+/* --- Éléments internes (Texte et Rectangles de points) --- */
+.rectangle, .rectangle-2 {
+  width: 100%;
+  height: 50px;
+  border: 4px solid #25e422;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
