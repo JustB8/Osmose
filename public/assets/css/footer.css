@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   width: 100%;
   align-items: flex-start;
+  justify-content: space-around;
   gap: var(--size-space-400);
   padding: var(--size-space-800) var(--size-space-800) 32px
     var(--size-space-800);
