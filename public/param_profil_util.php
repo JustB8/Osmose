@@ -5,38 +5,52 @@ require_once __DIR__ . '/call_bdd.php';
 
 session_start();
 
-// TODO: mettre l'id du user connecté dans la session lors du login uniquement (retirer ?? 1).
-$userId = $_SESSION['user_id'] ?? 1; // fallback pour tes tests
+$userId = (int)($_SESSION['user_id'] ?? 0);
+if ($userId <= 0) {
+    http_response_code(401);
+    exit('Non connecté');
+}
 
 $success = null;
 $errors = [];
+$companyId = null;
 
-// Charger l'utilisateur (pour pré-remplir le formulaire)
-$user = db_one('SELECT id, company_id, name, email, passwd FROM public.users WHERE id = :id', [':id' => $userId]);
+// Charge user + entreprise
+$user = db_one(
+    'SELECT u.id, u.company_id, u.name, u.email,
+            c.name AS company_name
+     FROM public.users u
+     LEFT JOIN public.company c ON c.id = u.company_id
+     WHERE u.id = :id',
+    [':id' => $userId]
+);
+
 if (!$user) {
     http_response_code(404);
     exit('Utilisateur introuvable');
 }
 
+// Liste entreprises (datalist)
+$companies = db_all('SELECT name FROM public.company ORDER BY name ASC');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
+    $action = (string)($_POST['action'] ?? '');
 
     if ($action === 'update') {
-        $nom = trim($_POST['nom'] ?? '');
-        $prenom = trim($_POST['prenom'] ?? '');
-        $entreprise = trim($_POST['entreprise'] ?? '');
+        $nom = trim((string)($_POST['nom'] ?? ''));
+        $prenom = trim((string)($_POST['prenom'] ?? ''));
+        $companyName = trim((string)($_POST['company_name'] ?? ''));
 
         $newPass = (string)($_POST['new_password'] ?? '');
         $newPassConfirm = (string)($_POST['new_password_confirm'] ?? '');
 
         if ($nom === '') $errors[] = "Le nom est obligatoire.";
         if ($prenom === '') $errors[] = "Le prénom est obligatoire.";
-        if ($entreprise === '') $errors[] = "L'entreprise est obligatoire.";
+        if ($companyName === '') $errors[] = "L'entreprise est obligatoire.";
 
-        // Construire le champ "name" selon ton schéma actuel
         $fullName = trim($nom . ' ' . $prenom);
 
-        // Gestion mot de passe (optionnel)
+        // Mot de passe optionnel
         $updatePassword = false;
         $hashed = null;
 
@@ -51,45 +65,99 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+        // Résolution / création entreprise (obligatoire)
+        if (!$errors) {
+            $companyNameNorm = preg_replace('/\s+/', ' ', $companyName);
+            $companyNameNorm = trim((string)$companyNameNorm);
+
+            $companyRow = db_one(
+                'SELECT id FROM public.company WHERE lower(name) = lower(:n) LIMIT 1',
+                [':n' => $companyNameNorm]
+            );
+
+            if ($companyRow) {
+                $companyId = (int)$companyRow['id'];
+            } else {
+                try {
+                    db_exec(
+                        'INSERT INTO public.company (name) VALUES (:n)',
+                        [':n' => $companyNameNorm]
+                    );
+                } catch (\Throwable $e) {
+                    // ignore : si UNIQUE violation, elle a été créée en parallèle
+                }
+
+                $companyRow = db_one(
+                    'SELECT id FROM public.company WHERE lower(name) = lower(:n) LIMIT 1',
+                    [':n' => $companyNameNorm]
+                );
+
+                if (!$companyRow) {
+                    $errors[] = "Impossible de créer / retrouver l'entreprise.";
+                } else {
+                    $companyId = (int)$companyRow['id'];
+                }
+            }
+        }
+
+        // Update user
         if (!$errors) {
             if ($updatePassword) {
                 db_exec(
-                        'UPDATE public.users SET name = :name, passwd = :passwd WHERE id = :id',
-                        [':name' => $fullName, ':passwd' => $hashed, ':id' => $userId]
+                    'UPDATE public.users
+                     SET name = :name, company_id = :company_id, passwd = :passwd
+                     WHERE id = :id',
+                    [
+                        ':name' => $fullName,
+                        ':company_id' => $companyId,
+                        ':passwd' => $hashed,
+                        ':id' => $userId,
+                    ]
                 );
             } else {
                 db_exec(
-                        'UPDATE public.users SET name = :name WHERE id = :id',
-                        [':name' => $fullName, ':id' => $userId]
+                    'UPDATE public.users
+                     SET name = :name, company_id = :company_id
+                     WHERE id = :id',
+                    [
+                        ':name' => $fullName,
+                        ':company_id' => $companyId,
+                        ':id' => $userId,
+                    ]
                 );
             }
 
             $success = "Profil mis à jour.";
-            // Recharger pour affichage à jour
-            $user = db_one('SELECT id, company_id, name, email, passwd FROM public.users WHERE id = :id', [':id' => $userId]);
+
+            // Reload user
+            $user = db_one(
+                'SELECT u.id, u.company_id, u.name, u.email,
+                        c.name AS company_name
+                 FROM public.users u
+                 LEFT JOIN public.company c ON c.id = u.company_id
+                 WHERE u.id = :id',
+                [':id' => $userId]
+            );
+
+            // Reload companies (si ajout possible)
+            $companies = db_all('SELECT name FROM public.company ORDER BY name ASC');
         }
     }
 
     if ($action === 'delete') {
         db_exec('DELETE FROM public.users WHERE id = :id', [':id' => $userId]);
-
-        // Si tu as une session, on la détruit
         session_destroy();
-
         $success = "Compte supprimé.";
-        // Option: rediriger vers une page d'accueil
-        // header('Location: /');
-        // exit;
+        // header('Location: /'); exit;
     }
 }
 
-// Pré-remplissage : on essaye de couper "name" en 2 parties (simple pour tests)
+// Prefill nom/prenom depuis users.name
 $nameParts = preg_split('/\s+/', trim((string)$user['name']), 2);
 $prefNom = $nameParts[0] ?? '';
 $prefPrenom = $nameParts[1] ?? '';
-$prefEntreprise = ''; // pas en BDD dans ton schéma actuel
+$prefCompanyName = (string)($user['company_name'] ?? '');
 ?>
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -127,13 +195,8 @@ $prefEntreprise = ''; // pas en BDD dans ton schéma actuel
 
                 <div class="ppu-field">
                     <label for="new_password">Nouveau mot de passe :</label>
-                    <input
-                            id="new_password"
-                            name="new_password"
-                            type="password"
-                            placeholder="nouveau mot de passe"
-                            autocomplete="new-password"
-                    >
+                    <input id="new_password" name="new_password" type="password"
+                           placeholder="nouveau mot de passe" autocomplete="new-password">
                 </div>
 
                 <div class="ppu-field">
@@ -143,35 +206,44 @@ $prefEntreprise = ''; // pas en BDD dans ton schéma actuel
 
                 <div class="ppu-field">
                     <label for="new_password_confirm">Confirmation du nouveau mot de passe :</label>
-                    <input
-                            id="new_password_confirm"
-                            name="new_password_confirm"
-                            type="password"
-                            placeholder="confirmer le mot de passe"
-                            autocomplete="new-password"
-                    >
+                    <input id="new_password_confirm" name="new_password_confirm" type="password"
+                           placeholder="confirmer le mot de passe" autocomplete="new-password">
                 </div>
 
                 <div class="ppu-field ppu-field--center">
-                    <label for="entreprise">Entreprise :</label>
-                    <input id="entreprise" name="entreprise" type="text" value="<?= htmlspecialchars($prefEntreprise) ?>" required>
+                    <label for="company_name">Entreprise :</label>
+                    <input
+                            id="company_name"
+                            name="company_name"
+                            type="text"
+                            list="companies"
+                            value="<?= htmlspecialchars($prefCompanyName) ?>"
+                            required
+                            placeholder="Commence à taper…"
+                            autocomplete="off"
+                    >
+                    <datalist id="companies">
+                        <?php foreach ($companies as $c): ?>
+                            <option value="<?= htmlspecialchars((string)$c['name']) ?>"></option>
+                        <?php endforeach; ?>
+                    </datalist>
                 </div>
             </div>
 
             <div class="ppu-actions">
                 <button class="ppu-btn" type="submit" name="action" value="update">Submit</button>
 
-                <button
-                        class="ppu-btn ppu-btn--delete"
-                        type="submit"
-                        name="action"
-                        value="delete"
-                        onclick="return confirm('Confirmer la suppression du compte ?');"
-                >
+                <button class="ppu-btn ppu-btn--delete" type="submit" name="action" value="delete"
+                        onclick="return confirm('Confirmer la suppression du compte ?');">
                     Supprimer le compte
                 </button>
             </div>
         </form>
+
+        <p style="margin-top: 1rem;">
+            Email : <strong><?= htmlspecialchars((string)$user['email']) ?></strong>
+        </p>
+
     </section>
 </main>
 </body>
