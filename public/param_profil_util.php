@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/call_bdd.php';
 
 session_start();
+$isLogged = isset($_SESSION['user']);
 
 // TODO: mettre l'id du user connecté dans la session lors du login uniquement (retirer ?? 1).
 $userId = $_SESSION['user_id'] ?? 1; // fallback pour tes tests
@@ -95,10 +96,18 @@ $prefEntreprise = ''; // pas en BDD dans ton schéma actuel
 <head>
     <meta charset="utf-8">
     <title>Paramètres profil</title>
+    <link rel="stylesheet" href="./assets/css/footer.css"/>
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="assets/css/param_profil_util.css">
+    <script>
+        window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
+    </script>
+    <script src="./assets/js/composents.js"></script>
 </head>
 
 <body>
+<main-header></main-header>
 <main class="ppu-page">
     <section class="ppu-card" aria-label="Paramètres du compte">
 
@@ -174,5 +183,6 @@ $prefEntreprise = ''; // pas en BDD dans ton schéma actuel
         </form>
     </section>
 </main>
+<main-footer></main-footer>
 </body>
 </html>

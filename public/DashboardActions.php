@@ -1,3 +1,8 @@
+<?php
+session_start();
+$isLogged = isset($_SESSION['user']);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -9,6 +14,9 @@
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/DashboardActions.css" />
+    <script>
+      window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
+    </script>
     <script src="./assets/js/composents.js"></script>
   </head>
   <body>

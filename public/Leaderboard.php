@@ -1,15 +1,23 @@
+<?php
+session_start();
+$isLogged = isset($_SESSION['user']);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Classement des entreprises - LeaderBoard</title>
-    <link rel="stylesheet" href="./assets/css/Leaderboard.css" />
-    <link rel="stylesheet" href="./assets/css/globals.css" />
-    <link rel="stylesheet" href="./assets/css/styleguide.css" />
-    <script src="./assets/js/composents.js"></script>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
+    <link rel="stylesheet" href="./assets/css/globals.css" />
+    <link rel="stylesheet" href="./assets/css/styleguide.css" />
+    <link rel="stylesheet" href="./assets/css/Leaderboard.css" />
+    <script>
+      window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
+    </script>
+    <script src="./assets/js/composents.js"></script>
   </head>
   <body>
       <main-header></main-header>
