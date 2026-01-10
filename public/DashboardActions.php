@@ -1,6 +1,59 @@
 <?php
-session_start();
-$isLogged = isset($_SESSION['user']);
+  session_start();
+  require_once 'call_bdd.php';
+
+  $userId = $_SESSION['user']['id'] ?? null;
+  $isLogged = isset($_SESSION['user']);
+
+  $allActions = [];
+  $userActions = [];
+  $error_msg = null;
+  $nb_actions = 0;
+  //On va chercher toutes les actions de la base
+  try {
+      $actionsFromDb = db_all("SELECT id, points as pts, name as label FROM action");
+      $nb_actions = count($actionsFromDb);
+
+      if ($nb_actions > 0) {
+
+          foreach ($actionsFromDb as $row) {
+              $allActions[$row['id']] = $row;
+          }
+
+          if ($userId) {
+              $userRows = db_all("SELECT action_id FROM user_action WHERE user_id = ?", [$userId]);
+              $userActions = array_column($userRows, 'action_id');
+          }
+      }
+  } catch (Exception $e) {
+      $error_msg = $e->getMessage();
+  }
+
+  // On relance un requete SQL pour obtenir le reste des informations sur l'action en question puis fusionne les infos qu'on envoi au JS (Eco -> Moins de requetes lors du chargement de la page)
+  if (isset($_GET['ajax']) && isset($_GET['id'])) {
+      header('Content-Type: application/json');
+      $id = (int)$_GET['id'];
+
+      // Si l'action existe
+      if (isset($allActions[$id])) {
+          try {
+              $res = db_one("SELECT description as desc FROM action WHERE id = ?", [$id]);
+              
+              // La fusion des infos
+              $fullAction = $allActions[$id];
+              $fullAction['desc'] = $res['desc'] ?? "Aucune description disponible.";
+
+              echo json_encode($fullAction); //On encode en json pour le JS
+          } catch (Exception $e) {
+              http_response_code(500);
+              echo json_encode(['error' => $e->getMessage()]);
+          }
+      } else {
+          http_response_code(404);
+          echo json_encode(['error' => "Action non trouvée"]);
+      }
+      exit;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +61,7 @@ $isLogged = isset($_SESSION['user']);
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <title>Liste des actions - Eco Actions</title>
+    <title>Liste des actions</title>
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
@@ -18,46 +71,42 @@ $isLogged = isset($_SESSION['user']);
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
     </script>
     <script src="./assets/js/composents.js"></script>
+    <script src="./assets/js/DashboardActions.js" defer></script>
   </head>
   <body>
+
       <main-header></main-header>
-      <main class="body">
-        <div class="body-2">
-          <h1 class="text-wrapper-7">Liste des actions</h1>
-          <form class="actions-form">
-            <div class="action-item">
-              <input type="checkbox" id="action-1" name="action-1" class="rectangle" />
-              <label for="action-1" class="text-wrapper-2">Trier ses déchets</label>
-              <span class="text-wrapper-8" aria-label="10 points pour cette action">10 points</span>
-            </div>
-            <div class="action-item">
-              <input type="checkbox" id="action-2" name="action-2" class="rectangle-2" />
-              <label for="action-2" class="text-wrapper-3">Eteindre les écrans</label>
-              <span class="text-wrapper-9" aria-label="10 points pour cette action">10 points</span>
-            </div>
-            <div class="action-item">
-              <input type="checkbox" id="action-3" name="action-3" class="rectangle-3" />
-              <label for="action-3" class="text-wrapper-4">Utiliser son vélo</label>
-              <span class="text-wrapper-10" aria-label="10 points pour cette action">10 points</span>
-            </div>
-            <div class="action-item">
-              <input type="checkbox" id="action-4" name="action-4" class="rectangle-4" />
-              <label for="action-4" class="text-wrapper-5">Utiliser une voiture éléctrique</label>
-              <span class="text-wrapper-11" aria-label="10 points pour cette action">10 points</span>
-            </div>
-            <div class="action-item">
-              <input type="checkbox" id="action-5" name="action-5" class="rectangle-5" />
-              <label for="action-5" class="text-wrapper-6">Ne pas utiliser l'avion</label>
-              <span class="text-wrapper-12" aria-label="10 points pour cette action">10 points</span>
-            </div>
-          </form>
-        </div>
+
+      <main>
+          <h1 id="Titre">Liste des actions</h1> 
+          <?php if ($nb_actions > 0 ): ?>
+            <?php foreach ($allActions as $id => $data): ?>
+                <div class="action" data-id="<?= $id ?>">
+                      <input type="checkbox" 
+                              id="action-<?= $id ?>" 
+                              <?= in_array($id, $userActions) ? 'checked' : '' ?> 
+                              disabled />
+                      <label for="action-<?= $id ?>" class="action-name">
+                          <?= $data['label'] ?>
+                      </label>
+                      <span class="action-points"><?= $data['pts'] ?> points</span>
+                </div>
+            <?php endforeach; ?> 
+          <?php else: ?>
+            <p class="no-action">Aucune action n'est disponible pour le moment.</p>
+          <?php endif; ?>
       </main>
-      <div class="button-valider">
-        <button type="submit" class="rectangle-6" aria-label="Valider les actions sélectionnées">
-          <span class="text-wrapper-13">Valider</span>
-        </button>
+
+      <div id="action-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-label"></h2>
+            <p id="modal-points"></p>
+            <p id="modal-desc"></p>
+        </div>
       </div>
+
       <main-footer></main-footer>
+
   </body>
 </html>
