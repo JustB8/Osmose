@@ -1,4 +1,4 @@
-.body {
+main {
   position: relative;
   width: 100%;
   max-width: 1226px;
@@ -7,12 +7,7 @@
   flex: 1;
 }
 
-.body-2 {
-  position: relative;
-  width: 100%;
-}
-
-.text-wrapper-7 {
+#Titre{
   width: 100%;
   text-align: center;
   margin-bottom: 102px;
@@ -24,26 +19,26 @@
   line-height: 32px;
 }
 
-.actions-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-}
-
-.action-item {
+.action {
   display: flex;
   align-items: center;
   gap: 12px;
   position: relative;
   margin-bottom: 23px;
+  padding : 5px;
 }
 
-.rectangle,
-.rectangle-2,
-.rectangle-3,
-.rectangle-4,
-.rectangle-5 {
+.action:hover {
+  border : 2px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#action-1,
+#action-2,
+#action-3,
+#action-4,
+#action-5 {
   appearance: none;
   width: 22px;
   height: 22px;
@@ -55,20 +50,20 @@
   position: relative;
 }
 
-.rectangle:checked,
-.rectangle-2:checked,
-.rectangle-3:checked,
-.rectangle-4:checked,
-.rectangle-5:checked {
+#action-1:checked,
+#action-2:checked,
+#action-3:checked,
+#action-4:checked,
+#action-5:checked {
   background-color: var(--color-background-positive-default);
   border-color: var(--color-background-positive-default);
 }
 
-.rectangle:checked::after,
-.rectangle-2:checked::after,
-.rectangle-3:checked::after,
-.rectangle-4:checked::after,
-.rectangle-5:checked::after {
+#action-1:checked::after,
+#action-2:checked::after,
+#action-3:checked::after,
+#action-4:checked::after,
+#action-5:checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -79,11 +74,7 @@
   font-weight: bold;
 }
 
-.text-wrapper-2,
-.text-wrapper-3,
-.text-wrapper-4,
-.text-wrapper-5,
-.text-wrapper-6 {
+.action-name {
   font-family: var(--single-line-body-base-font-family);
   font-weight: var(--single-line-body-base-font-weight);
   color: #000000;
@@ -96,11 +87,7 @@
   white-space: nowrap;
 }
 
-.text-wrapper-8,
-.text-wrapper-9,
-.text-wrapper-10,
-.text-wrapper-11,
-.text-wrapper-12 {
+.action-points {
   font-family: "Inter-Regular", Helvetica;
   font-weight: 400;
   color: #858181;
@@ -111,38 +98,19 @@
   white-space: nowrap;
 }
 
-.button-valider {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 40px 0 61px;
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(145, 145, 145, 0.5);
 }
 
-.rectangle-6 {
-  all: unset;
-  box-sizing: border-box;
-  width: 84px;
-  height: 26px;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.rectangle-6:hover {
-  background-color: var(--color-background-default-secondary-hover);
-}
-
-.text-wrapper-13 {
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 16px;
+.modal-content {
+    background-color: rgb(11, 197, 51);
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 8px;
 }
