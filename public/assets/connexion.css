@@ -1,0 +1,239 @@
+/* =========================================================
+   RESET + BASE
+========================================================= */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body-base-font-family, Inter, Arial, sans-serif), serif;
+    background-color: var(--color-background-default-default);
+    color: var(--color-text-default-default);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   DESIGN SYSTEM / TOKENS
+========================================================= */
+
+:root {
+    --single-line-body-base-font-family: "Inter", Helvetica;
+    --single-line-body-base-font-weight: 400;
+    --single-line-body-base-font-size: 16px;
+
+    --body-base-font-family: "Inter", Helvetica;
+    --body-base-font-size: 16px;
+
+    --body-strong-font-weight: 600;
+
+    --color-text-default-default: rgba(30, 30, 30, 1);
+    --color-text-brand-on-brand: rgba(245, 245, 245, 1);
+
+    --color-background-default-default: rgba(255, 255, 255, 1);
+    --color-background-brand-default: rgba(44, 44, 44, 1);
+    --color-background-brand-hover: rgba(30, 30, 30, 1);
+    --color-background-brand-tertiary: rgba(245, 245, 245, 1);
+    --color-background-neutral-tertiary-hover: rgba(205, 205, 205, 1);
+
+    --color-border-default-default: rgba(217, 217, 217, 1);
+    --color-border-brand-default: rgba(44, 44, 44, 1);
+    --color-border-neutral-secondary: rgba(118, 118, 118, 1);
+
+    --size-space-200: 8px;
+    --size-space-300: 12px;
+    --size-space-400: 16px;
+    --size-space-600: 24px;
+    --size-space-800: 32px;
+
+    --size-radius-200: 8px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--size-space-800);
+    background-color: var(--color-background-brand-tertiary);
+    border-bottom: 1px solid var(--color-border-default-default);
+}
+
+.logo {
+    height: 40px;
+}
+
+.site-header nav {
+    display: flex;
+    gap: var(--size-space-300);
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    all: unset;
+    box-sizing: border-box;
+    padding: var(--size-space-200) var(--size-space-300);
+    border-radius: var(--size-radius-200);
+    font-size: var(--single-line-body-base-font-size);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-background-brand-default);
+    color: var(--color-text-brand-on-brand);
+    border-color: var(--color-border-brand-default);
+}
+
+.auth-section button {
+    background-color: rgba(20, 174, 92, 1);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-background-brand-hover);
+}
+
+.btn-secondary {
+    background-color: var(--color-background-brand-tertiary);
+    border-color: var(--color-border-neutral-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-background-neutral-tertiary-hover);
+}
+
+/* =========================================================
+   MAIN / AUTH
+========================================================= */
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: rgba(217, 217, 217, 1);
+}
+
+.auth-section {
+    background-color: #ffffff;
+    padding: 25px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-400);
+    border-radius: 15px;
+}
+
+.auth-section h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-400);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-200);
+}
+
+label {
+    font-size: var(--body-base-font-size);
+}
+
+input {
+    padding: var(--size-space-300);
+    border-radius: var(--size-radius-200);
+    border: 1px solid var(--color-border-default-default);
+    font-size: var(--body-base-font-size);
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-space-800);
+    padding: var(--size-space-800);
+    background-color: var(--color-background-default-default);
+    border-top: 1px solid var(--color-border-default-default);
+}
+
+.site-footer img {
+    width: 9rem;
+}
+
+.site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-space-800);
+}
+
+.site-footer section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-300);
+    min-width: 160px;
+}
+
+.site-footer h2 {
+    margin: 0;
+    font-weight: var(--body-strong-font-weight);
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-space-200);
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
