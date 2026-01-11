@@ -1,51 +1,32 @@
-/* --- Conteneur Principal --- */
-.component {
+main {
   display: flex;
-  flex-direction: column; /* Organise le contenu de haut en bas */
+  flex-direction: column; 
   gap: 30px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  flex: 1; /* Remplit l'espace vertical disponible */
+  flex: 1; 
 }
 
-.points {
+#points {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly
 }
 
-/* --- Ligne du haut (Points) --- */
-/* On crée un conteneur pour aligner les deux sections de points à droite */
-.top-row {
-  display: flex;
-  justify-content: flex-end; /* Pousse les éléments vers la droite */
-  gap: 20px;
-  width: 100%;
-}
-
-.points-section, 
-.points-section-user {
+#points-entreprise, 
+#points-utilisateur {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px; /* Largeur fixe pour ces petits blocs */
+  width: 200px; 
 }
 
-/* --- Ligne du bas (Articles/Activités) --- */
-.bottom-row {
-  display: flex;
-  flex-direction: row; /* Aligne les articles côte à côte */
-  flex-wrap: wrap;     /* Permet de passer à la ligne sur petit écran */
-  gap: 20px;
-  width: 100%;
-}
-
-.rectangle-3, 
-.rectangle-4 {
-  flex: 1;            /* Chaque bloc prend une part égale de l'espace */
-  min-width: 500px;   /* Taille minimum avant de passer à la ligne */
+#activite, 
+#formation{
+  flex: 1;      
+  min-width: 500px;   
   background-color: #fafafa;
   border: 1px solid #010101;
   padding: 20px;
@@ -55,12 +36,32 @@
   margin : 5px;
 }
 
-/* --- Éléments internes (Texte et Rectangles de points) --- */
-.rectangle, .rectangle-2 {
+.cadre {
   width: 100%;
   height: 50px;
   border: 4px solid #25e422;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex; /* Affiché quand le JS ajoute 'active' */
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
 }
