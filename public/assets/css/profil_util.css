@@ -1,0 +1,204 @@
+/* =========================
+   Layout général (maquette)
+   ========================= */
+
+.pu-page{
+    padding: 24px 28px;
+}
+
+.pu-card{
+    background: #fff;
+    border: 1px solid #d1d5db;
+    padding: 22px 24px 26px;
+}
+
+/* Top bar : titre à gauche / niveau au centre / bouton à droite */
+.pu-topbar{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: start;
+    column-gap: 28px;
+}
+
+.pu-title{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Bloc niveau */
+.pu-level{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+    font-size: 18px;
+    color: #111827;
+}
+
+.pu-pill{
+    width: 64px;
+    height: 42px;
+    border: 1px solid #9ca3af;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    background: #fff;
+}
+
+/* Bouton "Modifier le profil" */
+.pu-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    padding: 0 18px;
+    border: 1px solid #9ca3af;
+    background: #fff;
+    color: #111827;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: -2px;
+}
+
+.pu-btn:hover{
+    background: #f9fafb;
+}
+
+/* =========================
+   Grille 2 colonnes
+   ========================= */
+
+.pu-grid{
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 34px;
+    align-items: start;
+}
+
+/* Colonne gauche : radar + infos entreprise */
+.pu-left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.pu-radarWrap{
+    padding-left: 8px; /* léger décalage comme la maquette */
+}
+
+/* Bloc niveau/rank entreprise */
+.pu-companyInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-left: 42px; /* aligne visuellement sous le radar */
+}
+
+.pu-companyBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pu-label{
+    font-size: 20px;
+    color: #111827;
+    font-weight: 500;
+}
+
+.pu-box{
+    width: 78px;
+    height: 52px;
+    border: 1px solid #9ca3af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+    background: #fff;
+}
+
+/* =========================
+   Panneau formations (droite)
+   ========================= */
+
+.pu-panel{
+    border: 1px solid #9ca3af;
+    background: #fff;
+    padding: 18px 22px;
+    min-height: 320px;
+}
+
+.pu-panelTitle{
+    margin: 0 0 14px 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.pu-list{
+    margin: 0;
+    padding: 0;
+    list-style: none; /* comme la maquette: lignes sans puces */
+}
+
+.pu-list li{
+    padding: 10px 0;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* =========================
+   Radar (tes styles)
+   ========================= */
+
+.radar {
+    width: 260px;
+    height: auto;
+    display: block;
+}
+
+/* Grille + axes */
+.grid { fill: none; stroke: #334155; stroke-width: 1.2; opacity: .9; }
+.grid2 { opacity: .6; }
+.grid3 { opacity: .35; }
+
+.axis { stroke: #334155; stroke-width: 1; opacity: .6; }
+
+/* Polygone valeurs */
+.fill   { fill: #22c55e; opacity: .25; }
+.stroke { fill: none; stroke: #22c55e; stroke-width: 2; }
+
+/* Labels autour (si tu les affiches) */
+.radar-label{
+    font-size: 10px;
+    fill: #111827;
+    dominant-baseline: middle;
+}
+
+/* =========================
+   Responsive simple
+   ========================= */
+
+@media (max-width: 900px){
+    .pu-topbar{
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+    }
+
+    .pu-grid{
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .pu-companyInfo{
+        padding-left: 0;
+        flex-direction: row;
+        gap: 18px;
+    }
+}
