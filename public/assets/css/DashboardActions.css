@@ -1,0 +1,115 @@
+  position: relative;
+  width: 100%;
+  max-width: 1226px;
+  margin: 129px auto 0;
+  padding: 0 var(--size-space-800);
+  flex: 1;
+}
+
+#Titre{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 102px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  margin-bottom: 23px;
+  padding : 5px;
+}
+
+.action:hover {
+  border : 2px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#action-1,
+#action-2,
+#action-3,
+#action-4,
+#action-5 {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin: 0;
+  position: relative;
+}
+
+#action-1:checked,
+#action-2:checked,
+#action-3:checked,
+#action-4:checked,
+#action-5:checked {
+  background-color: var(--color-background-positive-default);
+  border-color: var(--color-background-positive-default);
+}
+
+#action-1:checked::after,
+#action-2:checked::after,
+#action-3:checked::after,
+#action-4:checked::after,
+#action-5:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.action-name {
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #000000;
+  font-size: var(--single-line-body-base-font-size);
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+  cursor: pointer;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.action-points {
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #858181;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 16px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(145, 145, 145, 0.5);
+}
+
+.modal-content {
+    background-color: rgb(11, 197, 51);
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 8px;
+}
