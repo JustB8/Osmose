@@ -46,17 +46,26 @@ main {
 }
 
 .modal {
-    display: none; /* Caché par défaut */
+    display: none; 
     position: fixed;
     z-index: 1000;
-    left: 0; top: 0; width: 100%; height: 100%;
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%;
     background-color: rgba(0,0,0,0.5);
     align-items: center;
     justify-content: center;
 }
 
 .modal.active {
-    display: flex; /* Affiché quand le JS ajoute 'active' */
+    display: flex;
+}
+
+.modal-footer {
+  display : flex;
+  align-items : center; 
+  justify-content: space-evenly
 }
 
 .modal-content {
@@ -65,3 +74,22 @@ main {
     border-radius: 8px;
     min-width: 300px;
 }
+.reminder-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00f566;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+.reminder-badge:hover {
+  transform: scale(1.05);
+  background-color: #00f721;
+}
+
