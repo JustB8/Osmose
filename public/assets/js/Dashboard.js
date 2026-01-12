@@ -76,30 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Le bouton "Plus tard" ne doit plus recharger la page !
-    // Il doit juste basculer l'affichage vers la petite modal
     const closeBtn = document.getElementById('btn-close-popup');
     if (closeBtn) {
         closeBtn.onclick = () => {
-
-            if (inputAnswer) {
-                inputAnswer.disabled = true;
-            }
-
-            // ON AFFICHE LE CHARGEMENT ICI
+            // 1. Afficher le chargement
             showSpinner();
 
-            popup.classList.remove('active');
-            reminder.style.display = 'block';
-
-            // On informe le serveur du report en arrière-plan (AJAX léger)
+            // 2. Envoyer l'info au serveur sans recharger la page
             fetch('Dashboard.php', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Requested-With': 'XMLHttpRequest' // Pour que le PHP sache que c'est un Fetch
+                },
                 body: 'action=report_question'
+            }).then(() => {
+                // 3. Une fois que le serveur a répondu "OK" :
+                // On cache le chargement, on ferme la popup et on montre la bulle
+                if (modalFooterLoading) modalFooterLoading.style.display = 'none';
+                popup.classList.remove('active');
+                reminder.style.display = 'block';
+                
+                if (inputAnswer) inputAnswer.disabled = true;
             });
         };
     }
-
-    // ... reste de votre logique de validation ...
 });

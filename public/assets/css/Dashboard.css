@@ -8,6 +8,15 @@ main {
   padding: 20px;
   flex: 1; 
 }
+.text-activity-formation {
+  font-size: 1.7rem; /* Taille plus grande (environ 19px) */
+  font-weight: 500;   /* Optionnel : rend le texte un peu plus épais */
+  color: #333;
+  font-weight: bold;
+}
+h3{
+  color : #333;
+}
 
 #points {
   display: flex;
@@ -23,8 +32,7 @@ main {
   width: 200px; 
 }
 
-#activite, 
-#formation{
+.activity-formation {
   flex: 1;      
   min-width: 500px;   
   background-color: #fafafa;
@@ -34,6 +42,7 @@ main {
   flex-direction: column;
   gap: 10px;
   margin : 5px;
+  border-radius: 30px;
 }
 
 .cadre {
@@ -43,6 +52,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
 }
 
 .modal {
@@ -74,11 +84,12 @@ main {
     border-radius: 8px;
     min-width: 300px;
 }
-.reminder-badge {
+#reminder-modal {
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #00f566;
+  background-color: rgb(18, 148, 78);
   color: white;
   padding: 10px 20px;
   border-radius: 50px;
@@ -88,8 +99,22 @@ main {
   transition: transform 0.2s;
 }
 
-.reminder-badge:hover {
+#reminder-modal:hover {
   transform: scale(1.05);
-  background-color: #00f721;
+  background-color: rgb(26, 218, 115);
 }
 
+#feedback-message {
+  margin: 10px 0; 
+  font-weight: bold;
+}
+
+#user-answer {
+  width: 100%; 
+  padding: 8px; 
+  margin-bottom: 10px;
+}
+
+#modal-footer-charg {
+  display : none;
+}
