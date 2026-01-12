@@ -15,13 +15,13 @@ $userId = (int)($_SESSION['user_id'] ?? 1);
 $user = db_one(
     'SELECT u.id, u.company_id, u.name, u.email,
             COALESCE(u.level, 0) AS user_level,
-            c.name AS company_name,
-            COALESCE(c.level, 0) AS company_level
+            c.name AS company_name
      FROM public.users u
      LEFT JOIN public.company c ON c.id = u.company_id
      WHERE u.id = :id',
     [':id' => $userId]
 );
+
 
 if (!$user) {
     http_response_code(404);
@@ -30,48 +30,68 @@ if (!$user) {
 
 $companyId = (int)($user['company_id'] ?? 0);
 
+// ---- niveau d'entreprise terminées ----
+$companyLevel = 0;
+if ($companyId > 0) {
+    $row = db_one(
+        'SELECT COALESCE(ROUND(AVG(u.level))::int, 0) AS company_level
+         FROM public.users u
+         WHERE u.company_id = :cid',
+        [':cid' => $companyId]
+    );
+    $companyLevel = (int)($row['company_level'] ?? 0);
+}
+
 // ---- Formations terminées (EXEMPLE) ----
 // Suppose une table user_formation(user_id, formation_id, completed_at)
 // + formation(id, name)
-$completedFormations = db_all(
-    'SELECT f.name
-     FROM public.user_formation uf
-     JOIN public.formation f ON f.id = uf.formation_id
-     WHERE uf.user_id = :uid
-       AND uf.completed_at IS NOT NULL
-     ORDER BY uf.completed_at DESC
-     LIMIT 20',
-    [':uid' => $userId]
-);
+//$completedFormations = db_all(
+//    'SELECT f.name
+//     FROM public.user_formation uf
+//     JOIN public.formation f ON f.id = uf.formation_id
+//     WHERE uf.user_id = :uid
+//       AND uf.completed_at IS NOT NULL
+//     ORDER BY uf.completed_at DESC
+//     LIMIT 20',
+//    [':uid' => $userId]
+//);
 
 // fallback si rien
-if (!$completedFormations) {
-    $completedFormations = [
-        ['name' => 'Formation N°1 terminée'],
-        ['name' => 'Formation N°2 terminée'],
-        ['name' => 'Formation N°3 terminées'],
-        ['name' => '...'],
-    ];
-}
+//if (!$completedFormations) {
+//    $completedFormations = [
+//        ['name' => 'Formation N°1 terminée'],
+//        ['name' => 'Formation N°2 terminée'],
+//        ['name' => 'Formation N°3 terminées'],
+//        ['name' => '...'],
+//    ];
+//}
 
-// ---- Rank entreprise (EXEMPLE) ----
+// ---- Rank entreprise ----
 // Ici on calcule un "rang" en triant les entreprises par level décroissant.
-// Si tu as une logique différente, adapte.
 $companyRank = null;
 if ($companyId > 0) {
     $row = db_one(
-        'WITH ranked AS (
-            SELECT id, level,
-                   DENSE_RANK() OVER (ORDER BY level DESC, id ASC) AS rnk
-            FROM public.company
-         )
-         SELECT rnk
-         FROM ranked
-         WHERE id = :cid',
+        'WITH company_scores AS (
+            SELECT c.id,
+                   COALESCE(ROUND(AVG(u.level))::int, 0) AS score
+            FROM public.company c
+            LEFT JOIN public.users u ON u.company_id = c.id
+            GROUP BY c.id
+        ),
+        ranked AS (
+            SELECT id, score,
+                   DENSE_RANK() OVER (ORDER BY score DESC, id ASC) AS rnk
+            FROM company_scores
+        )
+        SELECT rnk
+        FROM ranked
+        WHERE id = :cid',
         [':cid' => $companyId]
     );
+
     $companyRank = $row ? (int)$row['rnk'] : null;
 }
+
 
 // -------------- Matrice (EXEMPLE) --------------
 // À terme : remplace par une requête BDD (ex table company_skills / user_skills)
