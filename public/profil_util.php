@@ -189,7 +189,7 @@ $companyLevel = (int)($user['company_level'] ?? 0);
     <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
-    <link rel="stylesheet" href="assets/css/param_profil_util.css">
+    <link rel="stylesheet" href="assets/css/profil_util.css">
 
     <script>
         window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
