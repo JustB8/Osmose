@@ -8,11 +8,12 @@ $form = isset($_GET['form']) ? $_GET['form'] : 'login';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Création de compte</title>
-    <link rel="stylesheet" href="./assets/css/footer.css"/>
-    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
     <link rel="stylesheet" href="assets/connexion.css" />
+    <link rel="stylesheet" href="./assets/css/header.css"/>
+    <link rel="stylesheet" href="./assets/css/footer.css"/>
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <script src="assets/js/composents.js"></script>
     <script>
       window.IS_LOGGED = false;
