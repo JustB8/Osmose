@@ -2,6 +2,7 @@
 session_start();
 $isLogged = isset($_SESSION['user']);
 $type_search = isset($_GET['type_search']) ? $_GET['type_search'] : 'thematique';
+$search_result = isset($_GET['$search_result']) ? $_GET['$search_result'] : null;
 
 switch ($type_search) {
     case 'formation':
@@ -63,6 +64,15 @@ function is_selected($btn_name, $type_search): string {
           <a type="button" class="type_search<?= is_selected("activite", $type_search) ?>" href="?type_search=activite">Activité</a>
         </div>
       </form>
+    </section>
+
+    <section class="result_section">
+      <?php if (isset($search_result)) { ?>
+        <h2>Voici vos résultat pour <?= $texte ?></h2>
+        <?php foreach ($search_result as $result) { ?>
+          <div class="search_result"></div>
+        <?php }?>
+      <?php } ?>
     </section>
   </main>
 
