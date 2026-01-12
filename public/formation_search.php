@@ -1,6 +1,19 @@
 <?php
 session_start();
 $isLogged = isset($_SESSION['user']);
+$type_search = isset($_GET['type_search']) ? $_GET['type_search'] : 'thematique';
+
+switch ($type_search) {
+    case 'formation':
+        $texte = "Formation";
+        break;
+    case 'activite':
+        $texte = "Activié";
+        break;
+    default:
+        $texte = "Thématique";
+        break;
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +29,8 @@ $isLogged = isset($_SESSION['user']);
     <link rel="stylesheet" href="./assets/css/footer.css"/>
     <script>
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
+
+
     </script>
     <script src="assets/js/composents.js"></script>
   </head>
@@ -23,52 +38,7 @@ $isLogged = isset($_SESSION['user']);
   <main-header></main-header>
 
   <main class="body">
-    <section class="recherche-formation" aria-label="Recherche et filtres">
-      <form class="barre-de-recherche" role="search">
-        <label for="search-input" class="visually-hidden">Rechercher une formation</label>
-        <input
-          type="search"
-          id="search-input"
-          class="search-input"
-          placeholder="Rechercher..."
-          aria-label="Rechercher une formation"
-        />
-        <img class="line" src="img/line-1.svg" alt="" role="presentation" />
-        <button type="submit" class="search-button" aria-label="Lancer la recherche">
-          <img class="image" src="img/image-5.png" alt="" />
-        </button>
-      </form>
-      <div class="filtre-thmatique">
-        <button type="button" class="filter-button" aria-label="Filtrer par thématique">
-          <img class="rectangle" src="img/rectangle-18.svg" alt="" role="presentation" />
-          <span class="text-wrapper-2">Thématique</span>
-        </button>
-      </div>
-      <div class="filtre-formation">
-        <button type="button" class="filter-button" aria-label="Filtrer par formation">
-          <img class="rectangle" src="img/rectangle-16.svg" alt="" role="presentation" />
-          <span class="text-wrapper-3">Formation</span>
-        </button>
-      </div>
-      <div class="filtre-activit">
-        <button type="button" class="filter-button" aria-label="Filtrer par activité">
-          <img class="rectangle" src="img/rectangle-17.svg" alt="" role="presentation" />
-          <span class="text-wrapper-4">Activité</span>
-        </button>
-      </div>
-    </section>
-    <section class="resultats-recherche" aria-label="Résultats de recherche">
-      <h1 class="text-wrapper-5">Liste de ....</h1>
-      <ul class="results-list">
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-        <li class="rectangle-2"></li>
-      </ul>
-    </section>
+    <p>Recherche de <?= $texte ?></p>
   </main>
 
   <main-footer></main-footer>
