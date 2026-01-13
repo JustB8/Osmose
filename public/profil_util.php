@@ -4,13 +4,26 @@ declare(strict_types=1);
 require_once __DIR__ . '/call_bdd.php';
 
 session_start();
-
 $isLogged = isset($_SESSION['user']);
 
-$userId = (int)($_SESSION['user_id'] ?? 1);
+$userId = (int)($_SESSION['user_id'] ?? 0);
 if ($userId <= 0) {
-    http_response_code(401);
-    exit('Non connecté');
+    ?>
+    <!doctype html>
+    <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Non connecté</title>
+    </head>
+    <body>
+    <script>
+        alert("Vous devez être connecté pour accéder à cette page.");
+        window.location.href = "/index.php"; // adapte ton chemin
+    </script>
+    </body>
+    </html>
+    <?php
+    exit;
 }
 
 /* =========================
