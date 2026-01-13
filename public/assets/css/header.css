@@ -85,20 +85,6 @@
   outline-offset: 2px;
 }
 
-.deco-reco {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: var(--single-line-body-base-font-family), serif;
-  font-weight: var(--single-line-body-base-font-weight);
-  color: var(--color-text-default-default);
-  font-size: var(--single-line-body-base-font-size);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  white-space: nowrap;
-  font-style: var(--single-line-body-base-font-style);
-}
-
 .div {
   all: unset;
   box-sizing: border-box;
@@ -126,7 +112,7 @@
   outline-offset: 2px;
 }
 
-.button-2 {
+.con-profil {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;

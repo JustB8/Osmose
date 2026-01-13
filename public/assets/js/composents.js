@@ -11,11 +11,10 @@ class MyHeader extends HTMLElement {
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
                         <button class="div" type="button">
-                            <span class="button-2">Mon profil</span>
+                            <span class="con-profil">Mon profil</span>
                         </button>
                         <button class="button" type="button">
-                            <span >Déconnexion</span>
-                            <a class="deco-reco" href="connexion.php?form=register">Créer un compte</a>
+                            <span>Déconnexion</span>
                         </button>
                     </nav>
                 </header>
@@ -32,10 +31,10 @@ class MyHeader extends HTMLElement {
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
                         <button class="button" type="button">
-                            <span class="deco-reco">Créer un compte</span>
+                            <a href="connexion.php?form=register">Créer un compte</a>
                         </button>
                         <button class="div" type="button">
-                            <span class="button-2">Connexion</span>
+                            <a href="connexion.php?form=login" class="con-profil">Connexion</a>
                         </button>
                     </nav>
                 </header>
@@ -66,8 +65,8 @@ class MyFooter extends HTMLElement {
                 </nav>
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
-                        <h2 class="text-strong" id="footer-leaderboard">
-                            <span class="text-strong-2">LeaderBoard</span>
+                        <h2 class="text-strong" id="footer-leaderboard">                            
+                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
@@ -111,16 +110,16 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item">Créer un compte</a>
+                        <a href="connexion.php?form=register" class="list-item">Créer un compte</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-2">Se connecter</a>
+                        <a href="connexion.php?form=login" class="list-item-2">Se connecter</a>
                     </div>
                 </nav>
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">
-                            <span class="text-strong-2">LeaderBoard</span>
+                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
