@@ -33,9 +33,9 @@ function is_selected($btn_name, $type_search): string {
     <title>Recherche de Formation</title>
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
-    <link rel="stylesheet" href="./assets/css/formation_search.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/footer.css"/>
+    <link rel="stylesheet" href="./assets/css/formation_search.css" />
     <script>
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
 
@@ -68,10 +68,16 @@ function is_selected($btn_name, $type_search): string {
 
     <section class="result_section">
       <?php if (isset($search_result)) { ?>
-        <h2>Voici vos résultat pour <?= $texte ?></h2>
-        <?php foreach ($search_result as $result) { ?>
-          <div class="search_result"></div>
-        <?php }?>
+        <div class="list_result">
+          <h2>Voici vos résultat pour <?= $texte ?> :</h2>
+          <?php foreach ($search_result as $result) { ?>
+            <div class="search_result">
+                <a><?= $result[1] ?></a>
+            </div>
+          <?php }?>
+        </div>
+      <?php } else { ?>
+        <h2>Vos résultats apparaîtront ici !</h2>
       <?php } ?>
     </section>
   </main>
