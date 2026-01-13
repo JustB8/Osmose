@@ -4,24 +4,40 @@ declare(strict_types=1);
 require_once __DIR__ . '/call_bdd.php';
 
 session_start();
-//$isLogged = isset($_SESSION['user']);
+$isLogged = isset($_SESSION['user']);
 
-$userId = (int)($_SESSION['user_id'] ?? 1);
-//if ($userId <= 0) {
-//    http_response_code(401);
-//    exit('Non connecté');
-//}
+$userId = (int)($_SESSION['user_id'] ?? 0);
+if ($userId <= 0) {
+    ?>
+    <!doctype html>
+    <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Non connecté</title>
+    </head>
+    <body>
+    <script>
+        alert("Vous devez être connecté pour accéder à cette page.");
+        window.location.href = "/index.php"; // adapte ton chemin
+    </script>
+    </body>
+    </html>
+    <?php
+    exit;
+}
 
+/* =========================
+   User + company
+   ========================= */
 $user = db_one(
-    'SELECT u.id, u.company_id, u.name, u.email,
+        'SELECT u.id, u.company_id, u.name, u.email,
             COALESCE(u.level, 0) AS user_level,
             c.name AS company_name
      FROM public.users u
      LEFT JOIN public.company c ON c.id = u.company_id
      WHERE u.id = :id',
-    [':id' => $userId]
+        [':id' => $userId]
 );
-
 
 if (!$user) {
     http_response_code(404);
@@ -30,48 +46,27 @@ if (!$user) {
 
 $companyId = (int)($user['company_id'] ?? 0);
 
-// ---- niveau d'entreprise terminées ----
+/* =========================
+   Niveau entreprise = AVG(level) des users
+   ========================= */
 $companyLevel = 0;
 if ($companyId > 0) {
     $row = db_one(
-        'SELECT COALESCE(ROUND(AVG(u.level))::int, 0) AS company_level
+            'SELECT COALESCE(ROUND(AVG(u.level))::int, 0) AS company_level
          FROM public.users u
          WHERE u.company_id = :cid',
-        [':cid' => $companyId]
+            [':cid' => $companyId]
     );
     $companyLevel = (int)($row['company_level'] ?? 0);
 }
 
-// ---- Formations terminées (EXEMPLE) ----
-// Suppose une table user_formation(user_id, formation_id, completed_at)
-// + formation(id, name)
-//$completedFormations = db_all(
-//    'SELECT f.name
-//     FROM public.user_formation uf
-//     JOIN public.formation f ON f.id = uf.formation_id
-//     WHERE uf.user_id = :uid
-//       AND uf.completed_at IS NOT NULL
-//     ORDER BY uf.completed_at DESC
-//     LIMIT 20',
-//    [':uid' => $userId]
-//);
-
-// fallback si rien
-//if (!$completedFormations) {
-//    $completedFormations = [
-//        ['name' => 'Formation N°1 terminée'],
-//        ['name' => 'Formation N°2 terminée'],
-//        ['name' => 'Formation N°3 terminées'],
-//        ['name' => '...'],
-//    ];
-//}
-
-// ---- Rank entreprise ----
-// Ici on calcule un "rang" en triant les entreprises par level décroissant.
+/* =========================
+   Rank entreprise (comparaison entre entreprises)
+   ========================= */
 $companyRank = null;
 if ($companyId > 0) {
     $row = db_one(
-        'WITH company_scores AS (
+            'WITH company_scores AS (
             SELECT c.id,
                    COALESCE(ROUND(AVG(u.level))::int, 0) AS score
             FROM public.company c
@@ -86,29 +81,98 @@ if ($companyId > 0) {
         SELECT rnk
         FROM ranked
         WHERE id = :cid',
-        [':cid' => $companyId]
+            [':cid' => $companyId]
     );
 
     $companyRank = $row ? (int)$row['rnk'] : null;
 }
 
+/* =========================
+   Stats thématiques -> skills (0..100)
+   ========================= */
+$thematicStats = db_all(
+        "SELECT
+         t.id   AS thematic_id,
+         t.name AS thematic_name,
 
-// -------------- Matrice (EXEMPLE) --------------
-// À terme : remplace par une requête BDD (ex table company_skills / user_skills)
-$skills = [
-    'Écologique'    => 62,
-    'Économique'    => 40,
-    'Social'        => 90,
-    'Gouvernance'   => 80,
-    'Territorial'   => 25,
-    'Culturel'      => 55,
-];
+         COALESCE(tp.total_points, 0) AS total_points,
+         COALESCE(up.user_points, 0)  AS user_points,
 
+         CASE
+           WHEN COALESCE(tp.total_points, 0) = 0 THEN 0
+           ELSE ROUND((COALESCE(up.user_points, 0)::numeric / tp.total_points::numeric) * 100)
+         END AS percent
+     FROM public.thematic t
+     LEFT JOIN (
+         SELECT thematic_id, SUM(points)::int AS total_points
+         FROM public.formation
+         GROUP BY thematic_id
+     ) tp ON tp.thematic_id = t.id
+     LEFT JOIN (
+         SELECT f.thematic_id, SUM(f.points)::int AS user_points
+         FROM public.user_formation uf
+         JOIN public.formation f ON f.id = uf.formation_id
+         WHERE uf.user_id = :uid
+           AND uf.status = 'completed'
+         GROUP BY f.thematic_id
+     ) up ON up.thematic_id = t.id
+     ORDER BY CASE t.name
+        WHEN 'Écologique'  THEN 1
+        WHEN 'Économique'  THEN 2
+        WHEN 'Social'      THEN 3
+        WHEN 'Gouvernance' THEN 4
+        WHEN 'Territorial' THEN 5
+        WHEN 'Culturel'    THEN 6
+        ELSE 999
+     END, t.name ASC",
+        [':uid' => $userId]
+);
+
+$skills = [];     // label => percent (0..100)
+$skillMeta = [];  // label => détails points (optionnel)
+
+foreach ($thematicStats as $row) {
+    $label = (string)$row['thematic_name'];
+
+    $percent = (int)$row['percent'];
+    $percent = max(0, min(100, $percent));
+
+    $skills[$label] = $percent;
+
+    $skillMeta[$label] = [
+            'user_points'  => (int)$row['user_points'],
+            'total_points' => (int)$row['total_points'],
+            'percent'      => $percent,
+    ];
+}
+
+/* =========================
+   Formations terminées
+   ========================= */
+$completedFormations = db_all(
+        "SELECT f.name
+     FROM public.user_formation uf
+     JOIN public.formation f ON f.id = uf.formation_id
+     WHERE uf.user_id = :uid
+       AND uf.status = 'completed'
+     ORDER BY uf.completed_at DESC
+     LIMIT 20",
+        [':uid' => $userId]
+);
+
+if (!$completedFormations) {
+    $completedFormations = [['name' => 'Pas de formation, commencez votre apprentissage maintenant !']];
+}
+
+/* =========================
+   Radar SVG helpers
+   ========================= */
 function radar_points(array $values, float $cx, float $cy, float $r, float $startAngleDeg = -90): string {
-    $values = array_values($values);        // IMPORTANT : garde juste les valeurs
+    $values = array_values($values);
     $n = count($values);
-    $pts = [];
+    if ($n === 0) return '';
 
+    $pts = [];
     for ($i = 0; $i < $n; $i++) {
         $v = max(0, min(100, (float)$values[$i]));
         $angle = deg2rad($startAngleDeg + (360 / $n) * $i);
@@ -116,14 +180,13 @@ function radar_points(array $values, float $cx, float $cy, float $r, float $star
 
         $x = $cx + cos($angle) * $len;
         $y = $cy + sin($angle) * $len;
-
         $pts[] = round($x, 2) . "," . round($y, 2);
     }
     return implode(" ", $pts);
 }
 
-// Grille : polygone "plein rayon" (100%) pour n axes
 function radar_grid_polygon(int $n, float $cx, float $cy, float $r, float $scale = 1.0, float $startAngleDeg = -90): string {
+    if ($n === 0) return '';
     $pts = [];
     for ($i = 0; $i < $n; $i++) {
         $angle = deg2rad($startAngleDeg + (360 / $n) * $i);
@@ -134,61 +197,65 @@ function radar_grid_polygon(int $n, float $cx, float $cy, float $r, float $scale
     return implode(" ", $pts);
 }
 
-// Axes : retourne un tableau des (x2,y2) pour dessiner les <line>
 function radar_axes(int $n, float $cx, float $cy, float $r, float $startAngleDeg = -90): array {
     $axes = [];
+    if ($n === 0) return $axes;
+
     for ($i = 0; $i < $n; $i++) {
         $angle = deg2rad($startAngleDeg + (360 / $n) * $i);
         $axes[] = [
-            'x2' => round($cx + cos($angle) * $r, 2),
-            'y2' => round($cy + sin($angle) * $r, 2),
+                'x2' => round($cx + cos($angle) * $r, 2),
+                'y2' => round($cy + sin($angle) * $r, 2),
         ];
     }
     return $axes;
 }
 
-$cx = 100; $cy = 100; $r = 85;
-$n  = count($skills);
-
-// Polygone valeurs
-$points = radar_points($skills, $cx, $cy, $r);
-
-// Grilles (3 niveaux)
-$grid1 = radar_grid_polygon($n, $cx, $cy, $r, 1.00);
-$grid2 = radar_grid_polygon($n, $cx, $cy, $r, 0.75);
-$grid3 = radar_grid_polygon($n, $cx, $cy, $r, 0.50);
-
-// Axes
-$axes = radar_axes($n, $cx, $cy, $r);
-
 function radar_labels(array $labels, float $cx, float $cy, float $rLabel, float $startAngleDeg = -90): array {
     $labels = array_values($labels);
     $n = count($labels);
     $out = [];
-    for ($i=0; $i<$n; $i++) {
-        $angle = deg2rad($startAngleDeg + (360/$n)*$i);
+    if ($n === 0) return $out;
+
+    for ($i = 0; $i < $n; $i++) {
+        $angle = deg2rad($startAngleDeg + (360 / $n) * $i);
         $out[] = [
-            'text' => (string)$labels[$i],
-            'x' => round($cx + cos($angle) * $rLabel, 2),
-            'y' => round($cy + sin($angle) * $rLabel, 2),
+                'text' => (string)$labels[$i],
+                'x' => round($cx + cos($angle) * $rLabel, 2),
+                'y' => round($cy + sin($angle) * $rLabel, 2),
         ];
     }
     return $out;
 }
+
+/* =========================
+   Radar compute
+   ========================= */
+$cx = 100; $cy = 100; $r = 85;
+$n  = count($skills);
+
+$points = radar_points($skills, $cx, $cy, $r);
+$grid1  = radar_grid_polygon($n, $cx, $cy, $r, 1.00);
+$grid2  = radar_grid_polygon($n, $cx, $cy, $r, 0.75);
+$grid3  = radar_grid_polygon($n, $cx, $cy, $r, 0.50);
+$axes   = radar_axes($n, $cx, $cy, $r);
 $labelPoints = radar_labels(array_keys($skills), $cx, $cy, $r + 18);
 
-// niveaux (affichage)
-$userLevel    = (int)($user['user_level'] ?? 0);
-$companyLevel = (int)($user['company_level'] ?? 0);
+/* =========================
+   Niveaux affichage
+   ========================= */
+$userLevel = (int)($user['user_level'] ?? 0);
 ?>
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Profil</title>
-    <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
+    <link rel="stylesheet" href="./assets/css/styleguide.css"/>
+    <link rel="stylesheet" href="./assets/css/footer.css"/>
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/profil_util.css">
 
     <script>
@@ -203,7 +270,6 @@ $companyLevel = (int)($user['company_level'] ?? 0);
 <main class="pu-page">
     <section class="pu-card" aria-label="profil utilisateur">
 
-        <!-- TOP BAR : titre + niveau + bouton -->
         <header class="pu-topbar">
             <h2 class="pu-title">Matrice de competence</h2>
 
@@ -212,30 +278,31 @@ $companyLevel = (int)($user['company_level'] ?? 0);
                 <span class="pu-pill"><?= (int)$userLevel ?></span>
             </div>
 
-            <a class="pu-btn" href="modifier_profil.php">Modifier le profil</a>
+            <a class="pu-btn" href="param_profil_util.php">Modifier le profil</a>
         </header>
 
-        <!-- 2 colonnes : gauche (radar + infos entreprise) / droite (formations) -->
         <div class="pu-grid">
 
-            <!-- COLONNE GAUCHE -->
             <div class="pu-left">
 
                 <div class="pu-radarWrap">
-                    <svg viewBox="0 0 200 200" class="radar" role="img" aria-label="Compétences">
-                        <!-- Grille (auto, 6 côtés) -->
+                    <svg viewBox="-13 -13 230 230" class="radar" role="img" aria-label="Compétences">
                         <polygon class="grid"  points="<?= htmlspecialchars($grid1) ?>"></polygon>
                         <polygon class="grid grid2" points="<?= htmlspecialchars($grid2) ?>"></polygon>
                         <polygon class="grid grid3" points="<?= htmlspecialchars($grid3) ?>"></polygon>
 
-                        <!-- Axes (auto, 6 lignes) -->
+                        <!-- Axes -->
+                        <?php foreach ($axes as $a): ?>
+                            <line class="axis" x1="<?= $cx ?>" y1="<?= $cy ?>" x2="<?= $a['x2'] ?>" y2="<?= $a['y2'] ?>"></line>
+                        <?php endforeach; ?>
+
+                        <!-- Labels -->
                         <?php foreach ($labelPoints as $lp): ?>
                             <text x="<?= $lp['x'] ?>" y="<?= $lp['y'] ?>" class="radar-label" text-anchor="middle">
                                 <?= htmlspecialchars($lp['text']) ?>
                             </text>
                         <?php endforeach; ?>
 
-                        <!-- Polygone valeurs -->
                         <polygon class="fill"   points="<?= htmlspecialchars($points) ?>"></polygon>
                         <polygon class="stroke" points="<?= htmlspecialchars($points) ?>"></polygon>
                     </svg>
@@ -255,7 +322,6 @@ $companyLevel = (int)($user['company_level'] ?? 0);
 
             </div>
 
-            <!-- COLONNE DROITE -->
             <div class="pu-right">
                 <div class="pu-panel">
                     <h3 class="pu-panelTitle">Formations terminées</h3>
