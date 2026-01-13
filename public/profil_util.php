@@ -148,7 +148,7 @@ $completedFormations = db_all(
 );
 
 if (!$completedFormations) {
-    $completedFormations = [['name' => '...']];
+    $completedFormations = [['name' => 'Pas de formation, commencez votre apprentissage maintenant !']];
 }
 
 /* =========================
@@ -238,9 +238,11 @@ $userLevel = (int)($user['user_level'] ?? 0);
 <head>
     <meta charset="utf-8">
     <title>Profil</title>
-    <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
+    <link rel="stylesheet" href="./assets/css/styleguide.css"/>
+    <link rel="stylesheet" href="./assets/css/footer.css"/>
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/profil_util.css">
 
     <script>
@@ -263,7 +265,7 @@ $userLevel = (int)($user['user_level'] ?? 0);
                 <span class="pu-pill"><?= (int)$userLevel ?></span>
             </div>
 
-            <a class="pu-btn" href="modifier_profil.php">Modifier le profil</a>
+            <a class="pu-btn" href="param_profil_util.php">Modifier le profil</a>
         </header>
 
         <div class="pu-grid">
