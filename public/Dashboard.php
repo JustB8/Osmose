@@ -81,7 +81,6 @@ if ($isLogged && $userId) {
                                     ORDER BY RANDOM() LIMIT 1;", $formationIds);
                 
                 if ($question) {
-                    // C'EST ICI QUE TOUT SE JOUE :
                     // On transmet au JS si l'utilisateur a cliqué sur "Plus tard" précédemment
                     $question['is_reported'] = (bool)$_SESSION['report'];
                 }

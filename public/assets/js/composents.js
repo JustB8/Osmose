@@ -5,14 +5,17 @@ class MyHeader extends HTMLElement {
             <div class="header">
                 <header class="header-2">  
                     <div class="icon_container">
-                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        <a href="index.php" class="Osmose">
+                            <img src="img/logo.svg" alt="Accueil" class="icon">
+                        </a>                        
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
                         <button class="div" type="button">
                             <span class="button-2">Mon profil</span>
                         </button>
                         <button class="button" type="button">
-                            <span class="text-wrapper">Déconnexion</span>
+                            <span >Déconnexion</span>
+                            <a class="deco-reco" href="connexion.php?form=register">Créer un compte</a>
                         </button>
                     </nav>
                 </header>
@@ -23,11 +26,13 @@ class MyHeader extends HTMLElement {
             <div class="header">
                 <header class="header-2">  
                     <div class="icon_container">
-                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        <a href="index.php" class="Osmose">
+                            <img src="img/logo.svg" alt="Accueil" class="icon">
+                        </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
                         <button class="button" type="button">
-                            <span class="text-wrapper">Créer un compte</span>
+                            <span class="deco-reco">Créer un compte</span>
                         </button>
                         <button class="div" type="button">
                             <span class="button-2">Connexion</span>
