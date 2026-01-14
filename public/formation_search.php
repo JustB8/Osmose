@@ -1,12 +1,26 @@
 <?php
 session_start();
+require_once __DIR__ . '/call_bdd.php';
+
 $isLogged = isset($_SESSION['user']);
 $type_search = isset($_GET['type_search']) ? $_GET['type_search'] : 'thematique';
-$search_result = isset($_GET['$search_result']) ? $_GET['$search_result'] : null;
+$uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : null;
+$search_result = null;
 
 switch ($type_search) {
     case 'formation':
         $texte = "Formation";
+
+        if (!empty($uti_search))  {
+            $search_result = db_all(
+            "SELECT id, name
+                FROM formation;"
+                //WHERE name ILIKE :search',
+              //      ['search' => '%'.$uti_search.'%']
+            );
+
+            echo "<script>console.log('Debug Objects: " . $search_result . "' );</script>";
+        }
         break;
     case 'activite':
         $texte = "Activité";
@@ -48,31 +62,50 @@ function is_selected($btn_name, $type_search): string {
 
   <main class="body">
     <section class="top_part">
-      <form action="/action_page.php">
+      <form method="get" action="">
         <h1>Recherche <?= $texte ?></h1>
 
         <div class="searchbar">
-          <input type="text" placeholder="Search..." name="search"/>
+          <input type="text" placeholder="Search..." name="uti_search" value="<?= htmlspecialchars($uti_search) ?>"/>
           <button type="submit" class="search_button">
-            <img src="img/loupe.svg" class="lens" alt="Lancer recherche"/>
+            <img src="img/loupe.svg" class="lens" alt="Lancer la recherche"/>
           </button>
         </div>
 
+        <input type="hidden" name="type_search" id="type_search" value="<?= $type_search ?>">
         <div class="btn_type">
-          <a type="button" class="type_search<?= is_selected("thematique", $type_search) ?>" href="?type_search=thematique">Thématique</a>
-          <a type="button" class="type_search<?= is_selected("formation", $type_search) ?>" href="?type_search=formation">Formation</a>
-          <a type="button" class="type_search<?= is_selected("activite", $type_search) ?>" href="?type_search=activite">Activité</a>
+          <button
+                  class="type_search<?= is_selected("thematique", $type_search) ?>"
+                  onclick="setType('thematique')">
+            Thématique
+          </button>
+          <button
+                  class="type_search<?= is_selected("formation", $type_search) ?>"
+                  onclick="setType('formation')">
+            Formation
+          </button>
+          <button
+                  class="type_search<?= is_selected("activite", $type_search) ?>"
+                  onclick="setType('activite')">
+            Activité
+          </button>
         </div>
       </form>
+
+      <script>
+        function setType(type) {
+          document.getElementById('type_search').value = type;
+        }
+      </script>
     </section>
 
     <section class="result_section">
       <?php if (isset($search_result)) { ?>
         <div class="list_result">
-          <h2>Voici vos résultat pour <?= $texte ?> :</h2>
+          <h2>Voici vos résultats pour <?= $texte ?> :</h2>
           <?php foreach ($search_result as $result) { ?>
             <div class="search_result">
-                <a><?= $result[1] ?></a>
+                <a><?= $result['name'] ?></a>
             </div>
           <?php }?>
         </div>
