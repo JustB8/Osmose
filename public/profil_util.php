@@ -302,6 +302,10 @@ $userLevel = (int)($user['user_level'] ?? 0);
                             </text>
                         <?php endforeach; ?>
 
+                        <?php foreach ($axes as $a): ?>
+                            <line class="axis" x1="<?= $cx ?>" y1="<?= $cy ?>" x2="<?= $a['x2'] ?>" y2="<?= $a['y2'] ?>"></line>
+                        <?php endforeach; ?>
+
                         <!-- Polygone valeurs -->
                         <polygon class="fill"   points="<?= htmlspecialchars($points) ?>"></polygon>
                         <polygon class="stroke" points="<?= htmlspecialchars($points) ?>"></polygon>
