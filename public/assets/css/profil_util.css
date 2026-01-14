@@ -177,8 +177,9 @@
 /* Labels autour (si tu les affiches) */
 .radar-label{
     font-size: 10px;
-    fill: #111827;
+    fill: #ffffff;
     dominant-baseline: middle;
+    border-radius: var(--size-radius-200);
 }
 
 .pu-top-actions {
@@ -193,7 +194,7 @@
 
 
 .pu-btn.secondary {
-    background-color: var(--secondary-color, #0061b6); 
+    background-color: var(--secondary-color, #00f300); 
 }
 
 /* =========================
