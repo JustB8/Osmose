@@ -70,7 +70,7 @@ class MyFooter extends HTMLElement {
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">                            
-                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
+                            <p class="text-strong-2">LeaderBoard</p>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
@@ -85,7 +85,7 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="/legal.php" class="list-item-4">Mention légale</a>
+                        <a href="/legal_notice.php" class="list-item-4">Mention légale</a>
                     </div>
                     <div class="text-link-list-item">
                         <a href="/rgaa.php" class="list-item">Justificatif RGAA</a>
@@ -129,7 +129,7 @@ class MyFooter extends HTMLElement {
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">
-                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
+                            <p class="text-strong-2">LeaderBoard</p>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
@@ -144,7 +144,7 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="/legal.php" class="list-item-4">Mention légale</a>
+                        <a href="/legal_notice.php" class="list-item-4">Mention légale</a>
                     </div>
                     <div class="text-link-list-item">
                         <a href="/rgaa.php" class="list-item">Justificatif RGAA</a>
