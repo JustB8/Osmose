@@ -59,7 +59,7 @@ function fmt_score($v): string { return number_format((float)$v, 1, ',', ' '); }
     <link rel="stylesheet" href="./assets/css/footer.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css" />
-    <link rel="stylesheet" href="./assets/css/Leaderboard.css" />
+    <link rel="stylesheet" href="./assets/css/leaderboard.css" />
     <script>
         window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
     </script>
