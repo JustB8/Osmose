@@ -109,7 +109,7 @@ if ($isLogged && $userId) {
       window.QUESTION_DU_JOUR = <?= json_encode($question) ?>;
     </script>
     <script src="./assets/js/composents.js"></script>
-    <script src="./assets/js/Dashboard.js" defer></script>
+    <script src="./assets/js/dashboard.js" defer></script>
   </head>
   <body>
       <main-header></main-header>

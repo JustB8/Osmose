@@ -71,7 +71,7 @@
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
     </script>
     <script src="./assets/js/composents.js"></script>
-    <script src="./assets/js/DashboardActions.js" defer></script>
+    <script src="./assets/js/dashboard_actions.js" defer></script>
   </head>
   <body>
 
