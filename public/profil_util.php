@@ -131,6 +131,16 @@ foreach ($thematicStats as $row) {
 
     $skills[$label] = $percent;
 
+// -------------- Matrice (EXEMPLE) --------------
+// À terme : remplace par une requête BDD (ex table company_skills / user_skills)
+//$skills = [
+//    'Écologique'    => 62,
+//    'Économique'    => 45,
+//    'Social'        => 90,
+//    'Gouvernance'   => 80,
+//    'Territorial'   => 25,
+//    'Culturel'      => 55,
+//];
     $skillMeta[$label] = [
             'user_points'  => (int)$row['user_points'],
             'total_points' => (int)$row['total_points'],
@@ -243,6 +253,7 @@ $userLevel = (int)($user['user_level'] ?? 0);
 <head>
     <meta charset="utf-8">
     <title>Profil</title>
+    <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
@@ -262,6 +273,7 @@ $userLevel = (int)($user['user_level'] ?? 0);
 <main class="pu-page">
     <section class="pu-card" aria-label="profil utilisateur">
 
+        <!-- TOP BAR : titre + niveau + bouton -->
         <header class="pu-topbar">
             <h2 class="pu-title">Matrice de compétence</h2>
 
@@ -273,24 +285,31 @@ $userLevel = (int)($user['user_level'] ?? 0);
             <a class="pu-btn" href="param_profil_util.php">Modifier le profil</a>
         </header>
 
+        <!-- 2 colonnes : gauche (radar + infos entreprise) / droite (formations) -->
         <div class="pu-grid">
+
+            <!-- COLONNE GAUCHE -->
             <div class="pu-left">
+
                 <div class="pu-radarWrap">
                     <svg viewBox="-13 -13 230 230" class="radar" role="img" aria-label="Compétences">
+                        <!-- Grille (auto, 6 côtés) -->
                         <polygon class="grid"  points="<?= htmlspecialchars($grid1) ?>"></polygon>
                         <polygon class="grid grid2" points="<?= htmlspecialchars($grid2) ?>"></polygon>
                         <polygon class="grid grid3" points="<?= htmlspecialchars($grid3) ?>"></polygon>
 
-                        <?php foreach ($axes as $a): ?>
-                            <line class="axis" x1="<?= $cx ?>" y1="<?= $cy ?>" x2="<?= $a['x2'] ?>" y2="<?= $a['y2'] ?>"></line>
-                        <?php endforeach; ?>
-
+                        <!-- Axes (auto, 6 lignes) -->
                         <?php foreach ($labelPoints as $lp): ?>
                             <text x="<?= $lp['x'] ?>" y="<?= $lp['y'] ?>" class="radar-label" text-anchor="middle">
                                 <?= htmlspecialchars($lp['text']) ?>
                             </text>
                         <?php endforeach; ?>
 
+                        <?php foreach ($axes as $a): ?>
+                            <line class="axis" x1="<?= $cx ?>" y1="<?= $cy ?>" x2="<?= $a['x2'] ?>" y2="<?= $a['y2'] ?>"></line>
+                        <?php endforeach; ?>
+
+                        <!-- Polygone valeurs -->
                         <polygon class="fill"   points="<?= htmlspecialchars($points) ?>"></polygon>
                         <polygon class="stroke" points="<?= htmlspecialchars($points) ?>"></polygon>
                     </svg>
@@ -307,8 +326,10 @@ $userLevel = (int)($user['user_level'] ?? 0);
                         <div class="pu-box"><?= $companyRank ? ('#' . (int)$companyRank) : '—' ?></div>
                     </div>
                 </div>
+
             </div>
 
+            <!-- COLONNE DROITE -->
             <div class="pu-right">
                 <div class="pu-panel">
                     <h3 class="pu-panelTitle">Formations terminées</h3>
