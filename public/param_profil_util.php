@@ -14,7 +14,7 @@ if (!$isLogged) {
     exit;
 }
 
-$userId = $_SESSION['user']['id'] ?? null;
+$userId = (int)$_SESSION['user']['id'];
 
 $success = null;
 $errors = [];
