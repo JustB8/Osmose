@@ -4,7 +4,7 @@ require_once __DIR__ . '/call_bdd.php';
 
 $isLogged = isset($_SESSION['user']);
 $type_search = isset($_GET['type_search']) ? $_GET['type_search'] : null;
-$uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : null;
+$uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : "";
 $search_result = null;
 
 switch ($type_search) {
