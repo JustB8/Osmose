@@ -3,13 +3,13 @@ session_start();
 require_once __DIR__ . '/call_bdd.php';
 
 $isLogged = isset($_SESSION['user']);
-$type_search = isset($_GET['type_search']) ? $_GET['type_search'] : 'thematique';
+$type_search = isset($_GET['type_search']) ? $_GET['type_search'] : null;
 $uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : null;
 $search_result = null;
 
 switch ($type_search) {
     case 'formation':
-        $texte = "Formation";
+        $texte = " par formation";
 
         if (!empty($uti_search))  {
             $search_result = db_all(
@@ -18,13 +18,62 @@ switch ($type_search) {
                 WHERE name ILIKE :search",
                     ['search' => '%'.$uti_search.'%']
             );
+        }else {
+          $search_result = db_all(
+            "SELECT id, name
+                FROM formation",
+            );
+
         }
         break;
+
     case 'activite':
-        $texte = "Activité";
+        $texte = "par activité";
+
+        if (!empty($uti_search))  {
+            $search_result = db_all(
+            "SELECT id, name
+                FROM formation
+                WHERE name ILIKE :search",
+                    ['search' => '%'.$uti_search.'%']
+            );
+        }else {
+          $search_result = db_all(
+            "SELECT id, name
+                FROM formation",
+            );
+
+        }
         break;
+
+    case 'thematique' :
+      $texte = "par thématique";
+
+      if (!empty($uti_search))  {
+            $search_result = db_all(
+            "SELECT id, name
+                FROM formation
+                WHERE name ILIKE :search",
+                    ['search' => '%'.$uti_search.'%']
+            );
+      }else {
+          $search_result = db_all(
+            "SELECT id, name
+                FROM formation",
+            );
+
+        }
+      break;
+
     default:
-        $texte = "Thématique";
+        $texte = "toutes les formations";
+
+        if (empty($uti_search))  {
+            $search_result = db_all(
+            "SELECT id, name
+                FROM formation",
+            );
+        }
         break;
 }
 
@@ -93,7 +142,6 @@ function is_selected($btn_name, $type_search): string {
       <script>
         function setType(type) {
           document.getElementById('type_search').value = type;
-          // Ajoute cette ligne pour valider automatiquement au clic sur "Formation" ou "Activité"
           document.querySelector('form').submit(); 
           }
       </script>
