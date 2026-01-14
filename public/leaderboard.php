@@ -72,6 +72,11 @@ function fmt_score($v): string { return number_format((float)$v, 1, ',', ' '); }
 <main class="body">
     <div class="bouton-recherche">
         <h1 class="text-wrapper-8" id="leaderboard-title">Classement des entreprises</h1>
+
+        <!-- Optionnel : ouvrir une recherche / aller à l’index avec param -->
+        <a class="rectangle-15" href="/index.php#companySearch" aria-label="Rechercher une entreprise">
+            <img class="image" src="img/loupe.svg" alt="Icône de recherche" />
+        </a>
     </div>
 
     <?php if ($myCompany): ?>

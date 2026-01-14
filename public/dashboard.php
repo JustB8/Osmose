@@ -2,6 +2,7 @@
 session_start();
 require_once 'call_bdd.php';
 
+$isLogged = isset($_SESSION['user']);
 $points_user = ['level' => 0];
 $points_entreprise = ['level' => 0];
 
