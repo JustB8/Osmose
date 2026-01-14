@@ -1,30 +1,18 @@
 <?php
 declare(strict_types=1);
 
+session_start();
 require_once __DIR__ . '/call_bdd.php';
 
-session_start();
-$isLogged = isset($_SESSION['user']);
+$isLogged = isset($_SESSION['user']) && is_array($_SESSION['user']) && isset($_SESSION['user']['id']);
 
-$userId = (int)($_SESSION['user_id'] ?? 0);
-if ($userId <= 0) {
-    ?>
-    <!doctype html>
-    <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Non connecté</title>
-    </head>
-    <body>
-    <script>
-        alert("Vous devez être connecté pour accéder à cette page.");
-        window.location.href = "/index.php"; // adapte ton chemin
-    </script>
-    </body>
-    </html>
-    <?php
+if (!$isLogged) {
+    // Pas d'output avant header()
+    header('Location: /connexion.php'); // ou /index.php si tu préfères
     exit;
 }
+
+$userId = (int)$_SESSION['user']['id'];
 
 /* =========================
    User + company
@@ -36,10 +24,11 @@ $user = db_one(
      FROM public.users u
      LEFT JOIN public.company c ON c.id = u.company_id
      WHERE u.id = :id',
-        [':id' => $userId]
+        ['id' => $userId]
 );
 
 if (!$user) {
+    // Toujours avant HTML
     http_response_code(404);
     exit('Utilisateur introuvable');
 }
@@ -55,7 +44,7 @@ if ($companyId > 0) {
             'SELECT COALESCE(ROUND(AVG(u.level))::int, 0) AS company_level
          FROM public.users u
          WHERE u.company_id = :cid',
-            [':cid' => $companyId]
+            ['cid' => $companyId]
     );
     $companyLevel = (int)($row['company_level'] ?? 0);
 }
@@ -81,7 +70,7 @@ if ($companyId > 0) {
         SELECT rnk
         FROM ranked
         WHERE id = :cid',
-            [':cid' => $companyId]
+            ['cid' => $companyId]
     );
 
     $companyRank = $row ? (int)$row['rnk'] : null;
@@ -125,11 +114,11 @@ $thematicStats = db_all(
         WHEN 'Culturel'    THEN 6
         ELSE 999
      END, t.name ASC",
-        [':uid' => $userId]
+        ['uid' => $userId]
 );
 
-$skills = [];     // label => percent (0..100)
-$skillMeta = [];  // label => détails points (optionnel)
+$skills = [];
+$skillMeta = [];
 
 foreach ($thematicStats as $row) {
     $label = (string)$row['thematic_name'];
@@ -157,7 +146,7 @@ $completedFormations = db_all(
        AND uf.status = 'completed'
      ORDER BY uf.completed_at DESC
      LIMIT 20",
-        [':uid' => $userId]
+        ['uid' => $userId]
 );
 
 if (!$completedFormations) {
@@ -271,7 +260,7 @@ $userLevel = (int)($user['user_level'] ?? 0);
     <section class="pu-card" aria-label="profil utilisateur">
 
         <header class="pu-topbar">
-            <h2 class="pu-title">Matrice de competence</h2>
+            <h2 class="pu-title">Matrice de compétence</h2>
 
             <div class="pu-level">
                 <span>Niveau :</span>
@@ -282,21 +271,17 @@ $userLevel = (int)($user['user_level'] ?? 0);
         </header>
 
         <div class="pu-grid">
-
             <div class="pu-left">
-
                 <div class="pu-radarWrap">
                     <svg viewBox="-13 -13 230 230" class="radar" role="img" aria-label="Compétences">
                         <polygon class="grid"  points="<?= htmlspecialchars($grid1) ?>"></polygon>
                         <polygon class="grid grid2" points="<?= htmlspecialchars($grid2) ?>"></polygon>
                         <polygon class="grid grid3" points="<?= htmlspecialchars($grid3) ?>"></polygon>
 
-                        <!-- Axes -->
                         <?php foreach ($axes as $a): ?>
                             <line class="axis" x1="<?= $cx ?>" y1="<?= $cy ?>" x2="<?= $a['x2'] ?>" y2="<?= $a['y2'] ?>"></line>
                         <?php endforeach; ?>
 
-                        <!-- Labels -->
                         <?php foreach ($labelPoints as $lp): ?>
                             <text x="<?= $lp['x'] ?>" y="<?= $lp['y'] ?>" class="radar-label" text-anchor="middle">
                                 <?= htmlspecialchars($lp['text']) ?>
@@ -319,7 +304,6 @@ $userLevel = (int)($user['user_level'] ?? 0);
                         <div class="pu-box"><?= $companyRank ? ('#' . (int)$companyRank) : '—' ?></div>
                     </div>
                 </div>
-
             </div>
 
             <div class="pu-right">
