@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['co_email'], $_POST['c
                 'experience' => (int)$user['experience'],
         ];
 
-        header('Location: /index.php');
+        header('Location: /dashboard.php');
         exit;
     } else {
         $error = "Adresse mail ou mot de passe incorrect.";
