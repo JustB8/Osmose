@@ -69,8 +69,8 @@ class MyFooter extends HTMLElement {
 
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
-                        <h2 class="text-strong" id="footer-leaderboard">
-                            <span class="text-strong-2">LeaderBoard</span>
+                        <h2 class="text-strong" id="footer-leaderboard">                            
+                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
@@ -129,7 +129,7 @@ class MyFooter extends HTMLElement {
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">
-                            <span class="text-strong-2">LeaderBoard</span>
+                            <a href="leaderboard.php" class="text-strong-2">LeaderBoard</a>
                         </h2>
                     </div>
                     <div class="text-link-list-item">
