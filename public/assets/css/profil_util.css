@@ -181,6 +181,21 @@
     dominant-baseline: middle;
 }
 
+.pu-top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    padding: 0 10px; 
+}
+
+
+.pu-btn.secondary {
+    background-color: var(--secondary-color, #6c757d); 
+}
+
 /* =========================
    Responsive simple
    ========================= */

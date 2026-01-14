@@ -271,6 +271,10 @@ $userLevel = (int)($user['user_level'] ?? 0);
 <main-header></main-header>
 
 <main class="pu-page">
+    <div class="pu-top-actions">
+        <a href="page_gauche.php" class="pu-btn secondary">Bouton Gauche</a>
+        <a href="page_droite.php" class="pu-btn secondary">Bouton Droite</a>
+    </div>
     <section class="pu-card" aria-label="profil utilisateur">
 
         <!-- TOP BAR : titre + niveau + bouton -->
