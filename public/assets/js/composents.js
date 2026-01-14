@@ -5,15 +5,17 @@ class MyHeader extends HTMLElement {
             <div class="header">
                 <header class="header-2">  
                     <div class="icon_container">
-                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        <a href="/index.php" class="logo-link">
+                            <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
-                        <button class="div" type="button">
+                        <a href="/profil_util.php" class="div">
                             <span class="button-2">Mon profil</span>
-                        </button>
-                        <button class="button" type="button">
+                        </a>
+                        <a href="/logout.php" class="button">
                             <span class="text-wrapper">Déconnexion</span>
-                        </button>
+                        </a>
                     </nav>
                 </header>
             </div>
@@ -23,15 +25,17 @@ class MyHeader extends HTMLElement {
             <div class="header">
                 <header class="header-2">  
                     <div class="icon_container">
-                        <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        <a href="/index.php" class="logo-link">
+                            <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                        </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
-                        <button class="button" type="button">
+                        <a href="/connexion.php?form=register" class="button">
                             <span class="text-wrapper">Créer un compte</span>
-                        </button>
-                        <button class="div" type="button">
+                        </a>
+                        <a href="/connexion.php" class="div">
                             <span class="button-2">Connexion</span>
-                        </button>
+                        </a>
                     </nav>
                 </header>
             </div>
@@ -45,7 +49,10 @@ class MyFooter extends HTMLElement {
         if (window.IS_LOGGED) {
             this.innerHTML = `
             <footer class="footer">
-                <img class="title" src="img/logo.svg" alt="Osmose" />
+                <a href="/index.php" class="logo-link">
+                    <img class="title" src="img/logo.svg" alt="Osmose" />
+                </a>
+
                 <nav class="text-link-list" aria-labelledby="footer-compte">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-compte">
@@ -53,12 +60,13 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item">Mon profil</a>
+                        <a href="/profil_util.php" class="list-item">Mon profil</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-2">Déconnexion</a>
+                        <a href="/logout.php" class="list-item-2">Déconnexion</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">
@@ -66,9 +74,10 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-3">Entreprise</a>
+                        <a href="/leaderboard.php" class="list-item-3">Entreprise</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-mentions">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-mentions">
@@ -76,12 +85,13 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-4">Mention légale</a>
+                        <a href="/legal.php" class="list-item-4">Mention légale</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item">Justificatif RGAA</a>
+                        <a href="/rgaa.php" class="list-item">Justificatif RGAA</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-plan">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-plan">
@@ -89,7 +99,7 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-5">Plan du site</a>
+                        <a href="/sitemap.php" class="list-item-5">Plan du site</a>
                     </div>
                     <div class="text-link-list-item"></div>
                 </nav>
@@ -98,7 +108,10 @@ class MyFooter extends HTMLElement {
         } else {
             this.innerHTML = `
             <footer class="footer">
-                <img class="title" src="img/logo.svg" alt="Osmose" />
+                <a href="/index.php" class="logo-link">
+                    <img class="title" src="img/logo.svg" alt="Osmose" />
+                </a>
+
                 <nav class="text-link-list" aria-labelledby="footer-compte">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-compte">
@@ -106,12 +119,13 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item">Créer un compte</a>
+                        <a href="/register.php" class="list-item">Créer un compte</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-2">Se connecter</a>
+                        <a href="/login.php" class="list-item-2">Se connecter</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-leaderboard">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-leaderboard">
@@ -119,9 +133,10 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-3">Entreprise</a>
+                        <a href="/leaderboard.php" class="list-item-3">Entreprise</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-mentions">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-mentions">
@@ -129,12 +144,13 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-4">Mention légale</a>
+                        <a href="/legal.php" class="list-item-4">Mention légale</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item">Justificatif RGAA</a>
+                        <a href="/rgaa.php" class="list-item">Justificatif RGAA</a>
                     </div>
                 </nav>
+
                 <nav class="text-link-list" aria-labelledby="footer-plan">
                     <div class="text-strong-wrapper">
                         <h2 class="text-strong" id="footer-plan">
@@ -142,7 +158,7 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="#" class="list-item-5">Plan du site</a>
+                        <a href="/sitemap.php" class="list-item-5">Plan du site</a>
                     </div>
                     <div class="text-link-list-item"></div>
                 </nav>

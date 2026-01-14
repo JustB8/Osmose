@@ -85,7 +85,7 @@
 }
 
 .leaderboard-rank {
-  width: 50px;
+  width: 80px;
   height: 50px;
   background-color: #fafafa;
   border: 1px solid #010101;
@@ -104,4 +104,74 @@
   display: flex;
   align-items: center;
   padding: 0 var(--size-space-400);
+}
+
+/* Podium texte */
+.podium-label {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.podium-name {
+  font-weight: 700;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.podium-score {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+/* Contenu ligne */
+.lb-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.lb-name {
+  font-weight: 700;
+}
+
+.lb-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.lb-badge {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Surlignage entreprise user */
+.leaderboard-row.is-mine .leaderboard-rank,
+.leaderboard-row.is-mine .leaderboard-content {
+  outline: 2px solid var(--color-border-brand-default);
+  outline-offset: -2px;
+}
+
+/* Carte “Votre entreprise” */
+.my-company-card {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+/* Footer */
+.lb-footer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
 }
