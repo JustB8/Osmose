@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+$_SESSION['user']['id'] = 1;
+$_SESSION['user']['name'] = "root";
+
 session_start();
 require_once __DIR__ . '/call_bdd.php';
 
