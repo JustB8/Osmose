@@ -14,12 +14,10 @@ switch ($type_search) {
         if (!empty($uti_search))  {
             $search_result = db_all(
             "SELECT id, name
-                FROM formation;"
-                //WHERE name ILIKE :search',
-              //      ['search' => '%'.$uti_search.'%']
+                FROM formation
+                WHERE name ILIKE :search",
+                    ['search' => '%'.$uti_search.'%']
             );
-
-            echo "<script>console.log('Debug Objects: " . $search_result . "' );</script>";
         }
         break;
     case 'activite':
