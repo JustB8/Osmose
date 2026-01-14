@@ -112,3 +112,21 @@ img {
     color: white;
     background-color: var(--color-background-positive-default);
 }
+
+.pu-top-actions {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 100%; 
+    padding: 0; 
+    margin-bottom: 20px;
+    
+}
+
+
+.pu-btn.secondary {
+    color : rgb(255, 255, 255);
+    background-color: var(--color-primitives-green-500-duplicate); 
+    border-radius: var(--size-radius-200);
+}

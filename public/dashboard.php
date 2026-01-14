@@ -115,6 +115,10 @@ if ($isLogged && $userId) {
       <main-header></main-header>
       
       <main>
+        <div class="pu-top-actions">
+            <a href="/profil_util.php" class="pu-btn secondary">⬅️ Profil</a>
+            <a href="/formation_search.php" class="pu-btn secondary">Formations ➡️</a>
+        </div>
         <div id="points">
           <section id="points-entreprise">
             <h2>Nombre de Points de l'entreprise</h2>

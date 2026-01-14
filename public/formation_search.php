@@ -108,6 +108,10 @@ function is_selected($btn_name, $type_search): string {
   <main-header></main-header>
 
   <main class="body">
+    <div class="pu-top-actions">
+        <a href="/profil_util.php" class="pu-btn secondary">⬅️ Profil</a>
+        <a href="/dashboard.php" class="pu-btn secondary">Dashboard ➡️</a>
+    </div>
     <section class="top_part">
       <form method="get" action="">
         <h1>Recherche <?= $texte ?></h1>
