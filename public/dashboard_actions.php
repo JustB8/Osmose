@@ -66,7 +66,7 @@
     <link rel="stylesheet" href="./assets/css/styleguide.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/footer.css" />
-    <link rel="stylesheet" href="./assets/css/DashboardActions.css" />
+    <link rel="stylesheet" href="./assets/css/dashboard_actions.css" />
     <script>
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
     </script>

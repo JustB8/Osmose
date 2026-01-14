@@ -98,7 +98,7 @@ if ($isLogged && $userId) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Dashboard - Points et Activités</title>
-    <link rel="stylesheet" href="./assets/css/Dashboard.css" />
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
@@ -143,7 +143,7 @@ if ($isLogged && $userId) {
         <article class="activity-formation">
             <h3>Dernière formation</h3>
             <p class="text-activity-formation"><?= htmlspecialchars($last_formation['nom']) ?></p>
-            <div class="action">
+            <div class="dash_action">
                 <a href="/dashboard_actions.php" >Consulter les actions réalisées</p>
             </div>
         </article>
