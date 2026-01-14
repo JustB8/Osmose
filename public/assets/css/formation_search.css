@@ -124,8 +124,16 @@ img {
     
 }
 
-.pu-btn.secondary {
-    color : rgb(255, 255, 255);
-    background-color: var(--color-primitives-green-500-duplicate); 
-    border-radius: var(--size-radius-200);
+.pu-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    padding: 0 18px;
+    border: 1px solid #9ca3af;
+    background: #fff;
+    color: #111827;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: -2px;
 }
