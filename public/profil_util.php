@@ -290,7 +290,6 @@ $userLevel = (int)($user['user_level'] ?? 0);
 
                 <div class="pu-radarWrap">
                     <svg viewBox="-13 -13 230 230" class="radar" role="img" aria-label="Compétences">
-                    <svg viewBox="-13 -13 230 230" class="radar" role="img" aria-label="Compétences">
                         <!-- Grille (auto, 6 côtés) -->
                         <polygon class="grid"  points="<?= htmlspecialchars($grid1) ?>"></polygon>
                         <polygon class="grid grid2" points="<?= htmlspecialchars($grid2) ?>"></polygon>
