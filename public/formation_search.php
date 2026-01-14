@@ -157,7 +157,7 @@ function is_selected($btn_name, $type_search): string {
           <h2>Voici vos résultats pour <?= $texte ?> :</h2>
           <?php foreach ($search_result as $result) { ?>
             <div class="search_result">
-              <a href="formation.php?id=<?= $result['id'] ?>"><?= $result['name'] ?></a>
+              <a href="/formation.php?id=<?= $result['id'] ?>"><?= $result['name'] ?></a>
             </div>
           <?php }?>
         </div>
