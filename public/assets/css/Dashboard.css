@@ -143,3 +143,8 @@ h3{
     font-size: 14px;
     margin-top: -2px;
 }
+
+.dash_action {
+  border: 1px solid #000000;
+  border-radius: 50px;
+}

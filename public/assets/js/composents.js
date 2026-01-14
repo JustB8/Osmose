@@ -119,10 +119,10 @@ class MyFooter extends HTMLElement {
                         </h2>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="/register.php" class="list-item">Créer un compte</a>
+                        <a href="/connexion.php?form=register" class="list-item">Créer un compte</a>
                     </div>
                     <div class="text-link-list-item">
-                        <a href="/login.php" class="list-item-2">Se connecter</a>
+                        <a href="/connexion.php" class="list-item-2">Se connecter</a>
                     </div>
                 </nav>
 

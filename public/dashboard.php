@@ -143,6 +143,9 @@ if ($isLogged && $userId) {
         <article class="activity-formation">
             <h3>Dernière formation</h3>
             <p class="text-activity-formation"><?= htmlspecialchars($last_formation['nom']) ?></p>
+            <div class="action">
+                <a href="/dashboard_actions.php" >Consulter les actions réalisées</p>
+            </div>
         </article>
 
         <div id="popup-question" class="modal">
