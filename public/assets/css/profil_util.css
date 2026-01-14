@@ -177,7 +177,7 @@
 /* Labels autour (si tu les affiches) */
 .radar-label{
     font-size: 10px;
-    fill: #ffffff;
+    fill: #111827;
     dominant-baseline: middle;
     border-radius: var(--size-radius-200);
 }
@@ -194,7 +194,8 @@
 
 
 .pu-btn.secondary {
-    background-color: var(--secondary-color, #00f300); 
+    color : rgb(255, 255, 255);
+    background-color: var(--color-primitives-green-500-duplicate); 
 }
 
 /* =========================
