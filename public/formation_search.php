@@ -93,7 +93,9 @@ function is_selected($btn_name, $type_search): string {
       <script>
         function setType(type) {
           document.getElementById('type_search').value = type;
-        }
+          // Ajoute cette ligne pour valider automatiquement au clic sur "Formation" ou "Activité"
+          document.querySelector('form').submit(); 
+          }
       </script>
     </section>
 
@@ -103,7 +105,7 @@ function is_selected($btn_name, $type_search): string {
           <h2>Voici vos résultats pour <?= $texte ?> :</h2>
           <?php foreach ($search_result as $result) { ?>
             <div class="search_result">
-                <a><?= $result['name'] ?></a>
+              <a href="formation.php?id=<?= $result['id'] ?>"><?= $result['name'] ?></a>
             </div>
           <?php }?>
         </div>
