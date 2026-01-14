@@ -116,7 +116,7 @@ if ($isLogged && $userId) {
       
       <main>
         <div class="pu-top-actions">
-            <a href="/dashboard.php" class="pu-btn secondary">⬅️ Dashboard</a>
+            <a href="/profil_util.php" class="pu-btn secondary">⬅️ Profil</a>
             <a href="/formation_search.php" class="pu-btn secondary">Formations ➡️</a>
         </div>
         <div id="points">

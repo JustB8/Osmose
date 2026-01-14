@@ -109,8 +109,8 @@ function is_selected($btn_name, $type_search): string {
 
   <main class="body">
     <div class="pu-top-actions">
-        <a href="/dashboard.php" class="pu-btn secondary">⬅️ Dashboard</a>
-        <a href="/formation_search.php" class="pu-btn secondary">Formations ➡️</a>
+        <a href="/profil_util.php" class="pu-btn secondary">⬅️ Profil</a>
+        <a href="/dashboard.php" class="pu-btn secondary">Dashboard ➡️</a>
     </div>
     <section class="top_part">
       <form method="get" action="">
