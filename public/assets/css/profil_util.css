@@ -179,7 +179,7 @@
     font-size: 10px;
     fill: #111827;
     dominant-baseline: middle;
-    border-radius: var(--size-radius-200);
+    
 }
 
 .pu-top-actions {
@@ -190,6 +190,7 @@
     max-width: 100%; 
     padding: 0; 
     margin-bottom: 20px;
+    border-radius: var(--size-radius-200);
 }
 
 
