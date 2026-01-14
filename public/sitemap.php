@@ -83,7 +83,7 @@ $isLogged = isset($_SESSION['user']);
                 <ul class="sitemap-sublist">
                     <?php if ($isLogged): ?>
                         <li><a href="/dashboard.php">Tableau de bord</a> <span class="badge-auth">Connecté</span></li>
-                        <li><a href="/formation.php">Mes Formations</a> <span class="badge-auth">Connecté</span></li>
+                        <li><a href="/formation_search.php">Mes Formations</a> <span class="badge-auth">Connecté</span></li>
                         <li><a href="/profil_util.php">Mon Profil</a> <span class="badge-auth">Connecté</span></li>
                         <li><a href="/param_profil_util.php">Paramètres du compte</a> <span class="badge-auth">Connecté</span></li>
                         <li><a href="/logout.php">Déconnexion</a></li>
@@ -97,6 +97,7 @@ $isLogged = isset($_SESSION['user']);
                 <h2>Informations Légales</h2>
                 <ul class="sitemap-sublist">
                     <li><a href="/legal_notice.php">Mentions Légales</a></li>
+                    <li><a href="/rgaa.php">Justificatif RGAA</a></li>
                 </ul>
             </li>
         </ul>
