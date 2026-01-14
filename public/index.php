@@ -211,7 +211,7 @@ if ($companyQuery !== '') {
             Idéal pour motiver une démarche collective et mesurer les progrès.
         </p>
         <div class="home-cta">
-            <a class="home-btn home-btn-primary" href="/Leaderboard.php">Consultez le classement</a>
+            <a class="home-btn home-btn-primary" href="/leaderboard.php">Consultez le classement</a>
         </div>
         <div class="home-search">
             <label class="home-label" for="companySearch">Trouver une entreprise</label>
