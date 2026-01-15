@@ -144,7 +144,7 @@ if ($isLogged && $userId) {
             <h3>Dernière formation</h3>
             <p class="text-activity-formation"><?= htmlspecialchars($last_formation['nom']) ?></p>
             <div class="dash_action">
-                <a href="/dashboard_actions.php" >Consulter les actions réalisées</p>
+                <a href="/dashboard_actions.php" >Consulter les actions réalisées</a>
             </div>
         </article>
 
