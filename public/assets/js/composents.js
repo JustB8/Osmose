@@ -2,18 +2,26 @@ class MyHeader extends HTMLElement {
     connectedCallback() {
         if (window.IS_LOGGED) {
             this.innerHTML = `
+            <nav role="navigation" aria-label="Liens pour skip" >
+                <ul class="skip-links">
+                    <li><a href="#site" class="skip-links__link visually-hidden-focusable">Passer à mon profil</a></li>
+                    <li><a href="#Button_search" class="skip-links__link visually-hidden-focusable">Passer à la déconnexion</a></li>
+                    <li><a href="#main-content" class="skip-links__link visually-hidden-focusable">Passer au contenu principal</a></li>
+                    <li><a href="#main-content" class="skip-links__link visually-hidden-focusable">Passer au bas de page</a></li>
+                </ul>
+            </nav>
             <div class="header">
-                <header class="header-2">  
+                <header>  
                     <div class="icon_container">
                         <a href="/index.php" class="logo-link">
-                            <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                            <img id="site_logo" src="img/logo.svg" alt="Logo du site" />
                         </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
-                        <a href="/profil_util.php" class="div">
+                        <a href="/profil_util.php" class="bouton-noir">
                             <span class="button-2">Mon profil</span>
                         </a>
-                        <a href="/logout.php" class="button">
+                        <a href="/logout.php" class="bouton-blanc">
                             <span class="text-wrapper">Déconnexion</span>
                         </a>
                     </nav>
@@ -22,19 +30,27 @@ class MyHeader extends HTMLElement {
             `;
         } else {
             this.innerHTML = `
+            <nav role="navigation" aria-label="Liens pour skip" >
+                <ul class="skip-links">
+                    <li><a href="#cree_compte" class="skip-links__link visually-hidden-focusable">Passer à la création de compte</a></li>
+                    <li><a href="#Button_search" class="skip-links__link visually-hidden-focusable">Passer à la connexion</a></li>
+                    <li><a href="#main-content" class="skip-links__link visually-hidden-focusable">Passer au contenu principal</a></li>
+                    <li><a href="#main-content" class="skip-links__link visually-hidden-focusable">Passer au bas de page</a></li>
+                </ul>
+            </nav>
             <div class="header">
-                <header class="header-2">  
+                <header>  
                     <div class="icon_container">
                         <a href="/index.php" class="logo-link">
-                            <img class="icon" src="img/logo.svg" alt="Logo du site" />
+                            <img id="site_logo" src="img/logo.svg" alt="Logo du site" />
                         </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
-                        <a href="/connexion.php?form=register" class="button">
-                            <span class="text-wrapper">Créer un compte</span>
+                        <a href="/connexion.php?form=register" class="bouton-blanc">
+                            <span id="cree_compte" >Créer un compte</span>
                         </a>
-                        <a href="/connexion.php" class="div">
-                            <span class="button-2">Connexion</span>
+                        <a href="/connexion.php" class="bouton-noir">
+                            <span id="connexion_compte">Connexion</span>
                         </a>
                     </nav>
                 </header>

@@ -2,8 +2,13 @@
 session_start();
 require_once 'call_bdd.php';
 
+
+
 $isLogged = isset($_SESSION['user']);
 $userId = $_SESSION['user']['id'] ?? null;
+
+$isLogged = true;
+$userId = 4;
 
 $points_user = ['level' => 0];
 $points_entreprise = ['level' => 0];
@@ -141,7 +146,7 @@ if ($isLogged && $userId) {
             <h3>Dernière formation</h3>
             <p class="text-activity-formation"><?= htmlspecialchars($last_formation['nom']) ?></p>
             <div class="dash_action">
-                <a href="/dashboard_actions.php" >Consulter les actions réalisées</a>
+                <a href="dashboard_actions.php" >Consulter les actions réalisées</a>
             </div>
         </article>
 
