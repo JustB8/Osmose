@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showSpinner();
 
             // 2. Envoyer l'info au serveur sans recharger la page
-            fetch('Dashboard.php', {
+            fetch('dashboard.php', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/x-www-form-urlencoded',
