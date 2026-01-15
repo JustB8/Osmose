@@ -115,6 +115,10 @@ if ($isLogged && $userId) {
       <main-header></main-header>
       
       <main>
+        <div class="pu-top-actions">
+            <a href="/formation_search.php" class="pu-btn secondary">⬅️ Formations </a>
+            <a href="/profil_util.php" class="pu-btn secondary">Profil ➡️</a>            
+        </div>
         <div id="points">
           <section id="points-entreprise">
             <h2>Nombre de Points de l'entreprise</h2>
@@ -139,6 +143,9 @@ if ($isLogged && $userId) {
         <article class="activity-formation">
             <h3>Dernière formation</h3>
             <p class="text-activity-formation"><?= htmlspecialchars($last_formation['nom']) ?></p>
+            <div class="dash_action">
+                <a href="/dashboard_actions.php" >Consulter les actions réalisées</p>
+            </div>
         </article>
 
         <div id="popup-question" class="modal">

@@ -1,0 +1,16 @@
+.container{
+    padding : 10px;
+}
+
+.last-update {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 32px;
+}
+
+.info-block {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 12px 0;
+}

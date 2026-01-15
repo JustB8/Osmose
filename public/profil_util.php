@@ -1,9 +1,6 @@
 <?php
 declare(strict_types=1);
 
-$_SESSION['user']['id'] = 1;
-$_SESSION['user']['name'] = "root";
-
 session_start();
 require_once __DIR__ . '/call_bdd.php';
 
@@ -272,8 +269,8 @@ $userLevel = (int)($user['user_level'] ?? 0);
 
 <main class="pu-page">
     <div class="pu-top-actions">
-        <a href="page_gauche.php" class="pu-btn secondary">Bouton Gauche</a>
-        <a href="page_droite.php" class="pu-btn secondary">Bouton Droite</a>
+        <a href="/dashboard.php" class="pu-btn secondary">⬅️ Dashboard</a>
+        <a href="/formation_search.php" class="pu-btn secondary">Formations ➡️</a>
     </div>
     <section class="pu-card" aria-label="profil utilisateur">
 

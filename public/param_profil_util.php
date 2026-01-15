@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/call_bdd.php';
-$_SESSION['user']['id'] = 1;
-$_SESSION['user']['name'] = "root";
+
 $isLogged = isset($_SESSION['user']) && is_array($_SESSION['user']) && isset($_SESSION['user']['id']);
 if (!$isLogged) {
     header('Location: /connexion.php?form=login');

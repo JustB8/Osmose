@@ -133,7 +133,7 @@ $availableFormations = db_all("SELECT id, name FROM formation ORDER BY id ASC");
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/footer.css"/>
-    <link rel="stylesheet" href="./assets/css/formation_details.css" />
+    <link rel="stylesheet" href="./assets/css/formation.css" />
     <script>
       window.IS_LOGGED = true;
     </script>

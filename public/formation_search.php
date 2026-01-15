@@ -4,7 +4,7 @@ require_once __DIR__ . '/call_bdd.php';
 
 $isLogged = isset($_SESSION['user']);
 $type_search = isset($_GET['type_search']) ? $_GET['type_search'] : null;
-$uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : null;
+$uti_search = isset($_GET['uti_search']) ? $_GET['uti_search'] : "";
 $search_result = null;
 
 switch ($type_search) {
@@ -108,6 +108,10 @@ function is_selected($btn_name, $type_search): string {
   <main-header></main-header>
 
   <main class="body">
+    <div class="pu-top-actions">
+        <a href="/profil_util.php" class="pu-btn secondary">⬅️ Profil</a>
+        <a href="/dashboard.php" class="pu-btn secondary">Dashboard ➡️</a>
+    </div>
     <section class="top_part">
       <form method="get" action="">
         <h1>Recherche <?= $texte ?></h1>
@@ -153,7 +157,7 @@ function is_selected($btn_name, $type_search): string {
           <h2>Voici vos résultats pour <?= $texte ?> :</h2>
           <?php foreach ($search_result as $result) { ?>
             <div class="search_result">
-              <a href="formation.php?id=<?= $result['id'] ?>"><?= $result['name'] ?></a>
+              <a href="/formation.php?id=<?= $result['id'] ?>"><?= $result['name'] ?></a>
             </div>
           <?php }?>
         </div>

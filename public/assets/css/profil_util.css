@@ -179,21 +179,18 @@
     font-size: 10px;
     fill: #111827;
     dominant-baseline: middle;
+    
 }
 
 .pu-top-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 20px auto;
-    padding: 0 10px; 
-}
-
-
-.pu-btn.secondary {
-    background-color: var(--secondary-color, #6c757d); 
+    max-width: 100%; 
+    padding: 0; 
+    margin-bottom: 20px;
+    
 }
 
 /* =========================
