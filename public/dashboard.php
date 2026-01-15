@@ -2,21 +2,19 @@
 session_start();
 require_once 'call_bdd.php';
 
-
 $isLogged = isset($_SESSION['user']);
 $userId = $_SESSION['user']['id'] ?? null;
 
 $points_user = ['level' => 0];
 $points_entreprise = ['level' => 0];
-
-$question = null; // Contiendra les infos pour le JS
+$question = null;
 
 // --- 1. LOGIQUE DE REPORT (Action déclenchée par le bouton "Plus tard") ---
 if (isset($_POST['action']) && $_POST['action'] === 'report_question') {
     $_SESSION['report'] = true;
     $_SESSION['report_date'] = date('Y-m-d');
     
-    // Si c'est l'appel invisible (Fetch) du JS, on arrête l'exécution ici
+    // Si c'est l'appel Fetch du JS, on arrête ici
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
         exit;
     }
@@ -27,14 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valider_reponse'])) {
     $qId = $_POST['question_id'];
     db_exec("INSERT INTO user_daily_answer (user_id, daily_question_id, day, answered_at) 
              VALUES (?, ?, CURRENT_DATE, NOW());", [$userId, $qId]);
-    header("Location: /dashboard.php");
+    
+    // On réinitialise le report après une réponse validée
+    $_SESSION['report'] = false;
+    
+    header("Location: dashboard.php");
     exit;
 }
 
 // --- 3. LOGIQUE D'AFFICHAGE ET RÉCUPÉRATION DES DONNÉES ---
 if ($isLogged && $userId) {
     try {
-        // Récupération des points et activités
+        // Points et activités
         $points_entreprise = db_one("SELECT SUM(level) AS level FROM users WHERE company_id = (SELECT company_id FROM users WHERE id = ?)", [$userId]);
         $points_user = db_one("SELECT level AS level FROM users WHERE id = ?;", [$userId]);    
         
@@ -43,37 +45,32 @@ if ($isLogged && $userId) {
                                  WHERE user_id = ? AND is_completed = true
                                  ORDER BY completed_at DESC;", [$userId]);
 
-        $last_formation = db_one("SELECT name AS nom FROM formation 
+        $last_f_data = db_one("SELECT name AS nom FROM formation 
                                   INNER JOIN user_formation ON formation.id = user_formation.formation_id
                                   WHERE user_id = ? AND status = 'completed'
                                   ORDER BY completed_at DESC;", [$userId]);
 
-        $last_formation = $last_formation ?: ['nom' => "Vous n'avez pas de formation complétée"];
+        $last_formation = $last_f_data ?: ['nom' => "Vous n'avez pas de formation complétée"];
         $last_activity = $last_activity ?: ['nom' => "Vous n'avez pas d'activité complétée"];
 
-        // --- GESTION DE LA PERSISTANCE DU REPORT ---
-        // On initialise les variables de session si elles n'existent pas
-        if (!isset($_SESSION['report'])) $_SESSION['report'] = false;
-        if (!isset($_SESSION['report_date'])) $_SESSION['report_date'] = '';
-
-        // Si on a changé de jour, on réinitialise automatiquement le report
-        if ($_SESSION['report_date'] !== date('Y-m-d')) {
+        // --- GESTION DE LA PERSISTANCE DU REPORT (CORRIGÉ) ---
+        $aujourdhui = date('Y-m-d');
+        if (!isset($_SESSION['report_date']) || $_SESSION['report_date'] !== $aujourdhui) {
             $_SESSION['report'] = false;
+            $_SESSION['report_date'] = $aujourdhui;
         }
 
         // --- RÉCUPÉRATION DE LA QUESTION DU JOUR ---
-        // On récupère les formations terminées pour savoir quelle question poser
         $formations = db_all("SELECT formation_id FROM user_formation WHERE user_id = ? AND status = 'completed';", [$userId]);
         
         if (!empty($formations)) {
-            // Vérifier si l'utilisateur a déjà répondu aujourd'hui
             $lastReponse = db_one("SELECT day FROM user_daily_answer WHERE user_id = ? AND day = CURRENT_DATE;", [$userId]);
 
             if (!$lastReponse) {
                 $formationIds = array_column($formations, 'formation_id');
                 $placeholders = implode(',', array_fill(0, count($formationIds), '?'));
                 
-                // On cherche une question au hasard parmi ses formations
+                // On récupère 'answer' pour que le JS puisse comparer
                 $question = db_one("SELECT id, question, answer 
                                     FROM daily_question 
                                     WHERE formation_id IN ($placeholders) 
@@ -81,8 +78,7 @@ if ($isLogged && $userId) {
                                     ORDER BY RANDOM() LIMIT 1;", $formationIds);
                 
                 if ($question) {
-                    // On transmet au JS si l'utilisateur a cliqué sur "Plus tard" précédemment
-                    $question['is_reported'] = (bool)$_SESSION['report'];
+                    $question['is_reported'] = (isset($_SESSION['report']) && $_SESSION['report'] === true);
                 }
             }
         }
@@ -92,6 +88,7 @@ if ($isLogged && $userId) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
