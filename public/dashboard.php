@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['valider_reponse'])) {
     $qId = $_POST['question_id'];
     db_exec("INSERT INTO user_daily_answer (user_id, daily_question_id, day, answered_at) 
              VALUES (?, ?, CURRENT_DATE, NOW());", [$userId, $qId]);
-    header("Location: Dashboard.php");
+    header("Location: /dashboard.php");
     exit;
 }
 

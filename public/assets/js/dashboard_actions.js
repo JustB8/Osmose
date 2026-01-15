@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchFullAction(id) {
     try {
-        const response = await fetch(`DashboardActions.php?ajax=1&id=${id}`);
+        const response = await fetch(`dashboard_actions.php?ajax=1&id=${id}`);
         if (!response.ok) throw new Error("Erreur lors de la récupération");
             const fullAction = await response.json();
             showModal(fullAction);
