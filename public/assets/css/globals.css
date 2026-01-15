@@ -13,7 +13,9 @@ button:focus-visible {
 }
 a {
     text-decoration: none;
+    color: inherit;
 }
+
 a:focus-visible {
     outline: 2px solid #4a90e2 !important;
     outline-offset: 2px;
@@ -33,5 +35,5 @@ a:focus-visible {
 }
 
 html, body {
-    font-family: var(--font-base);
+    font-family: var(--font-base), serif;
 }
