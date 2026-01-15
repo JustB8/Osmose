@@ -98,7 +98,7 @@ if ($isLogged && $userId) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Dashboard - Points et Activités</title>
-    <link rel="stylesheet" href="./assets/css/Dashboard.css" />
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css" />
     <link rel="stylesheet" href="./assets/css/header.css" />
@@ -109,7 +109,7 @@ if ($isLogged && $userId) {
       window.QUESTION_DU_JOUR = <?= json_encode($question) ?>;
     </script>
     <script src="./assets/js/composents.js"></script>
-    <script src="./assets/js/Dashboard.js" defer></script>
+    <script src="./assets/js/dashboard.js" defer></script>
   </head>
   <body>
       <main-header></main-header>
