@@ -14,8 +14,8 @@ button:focus-visible {
 a {
     text-decoration: none;
 }
-a:focus-visible {
-    outline: 2px solid #4a90e2 !important;
+*:focus-visible {
+    outline: 2px solid #d32f2f !important;
     outline-offset: 2px;
 }
 

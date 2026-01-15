@@ -40,7 +40,8 @@ header {
   flex: 1;
 }
 
-.bouton-blanc {
+#bouton-blanc-crea,
+#bouton-blanc-deco {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -58,16 +59,19 @@ header {
   cursor: pointer;
 }
 
-.bouton-blanc:hover {
+#bouton-blanc-crea:hover,
+#bouton-blanc-deco:hover {
   background-color: var(--color-background-neutral-tertiary-hover);
 }
 
-.bouton-blanc:focus {
+#bouton-blanc-crea:focus,
+#bouton-blanc-deco:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.bouton-noir {
+#bouton-noir-con,
+#bouton-noir-profil {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -85,11 +89,13 @@ header {
   cursor: pointer;
 }
 
-.bouton-noir:hover {
+#bouton-noir-con:hover,
+#bouton-noir-profil:hover {
   background-color: var(--color-background-brand-hover);
 }
 
-.bouton-noir:focus {
+#bouton-noir-con:focus,
+#bouton-noir-profil:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
@@ -159,4 +165,10 @@ header {
 .visually-hidden-focusable:not(:focus-visible,:focus-within) {
     position: absolute !important;
     top: -1000px;
+}
+
+.logo-link:focus-visible {
+    outline: 3px solid var(--color-border-brand-default);
+    outline-offset: -4px;
+    border-radius: 50%; 
 }
