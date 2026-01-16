@@ -18,11 +18,11 @@ class MyHeader extends HTMLElement {
                         </a>
                     </div>
                     <nav class="header-auth" aria-label="Navigation principale">
-                        <a href="/profil_util.php" class="bouton-noir-profil">
-                            <span class="button-2">Mon profil</span>
+                        <a href="/profil_util.php" id="bouton-noir-profil">
+                            <span id="profil">Mon profil</span>
                         </a>
-                        <a href="/logout.php" class="bouton-blanc-deco">
-                            <span class="text-wrapper">Déconnexion</span>
+                        <a href="/logout.php" id="bouton-blanc-deco">
+                            <span id="deconnex">Déconnexion</span>
                         </a>
                     </nav>
                 </header>
@@ -65,10 +65,9 @@ class MyFooter extends HTMLElement {
         if (window.IS_LOGGED) {
             this.innerHTML = `
             <footer>
-                <a href="/index.php" class="logo-link">
+                <a href="/index.php" id="logo-link-footer">
                     <img class="title" src="img/logo.svg" alt="Osmose" />
                 </a>
-
                 <nav class="liste-liens" aria-labelledby="footer-compte">
                     <div>
                         <h2 id="footer-compte">
@@ -85,7 +84,7 @@ class MyFooter extends HTMLElement {
 
                 <nav class="liste-liens" aria-labelledby="footer-leaderboard">
                     <div>
-                        <h2 id="footer-leaderboard">                            
+                        <h2 id="footer-leaderboard">
                             <p class="text-strong">LeaderBoard</p>
                         </h2>
                     </div>
@@ -97,7 +96,7 @@ class MyFooter extends HTMLElement {
                 <nav class="liste-liens" aria-labelledby="footer-mentions">
                     <div>
                         <h2 id="footer-mentions">
-                            <span class="text-strong">Mention du site</span>
+                            <p class="text-strong">Mention du site</p>
                         </h2>
                     </div>
                     <div class="liste-liens-item">
@@ -111,7 +110,7 @@ class MyFooter extends HTMLElement {
                 <nav class="liste-liens" aria-labelledby="footer-plan">
                     <div>
                         <h2 id="footer-plan">
-                            <span class="text-strong">Plan du site</span>
+                            <p class="text-strong">Plan du site</p>
                         </h2>
                     </div>
                     <div class="liste-liens-item">
