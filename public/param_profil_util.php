@@ -233,7 +233,7 @@ $prefCompanyId = (int)($user['company_id'] ?? 0);
 <body>
 <main-header></main-header>
 
-<main class="ppu-page">
+<main id="main-content" class="ppu-page">
     <section class="ppu-card" aria-label="Paramètres du compte">
 
         <?php if ($success): ?>

@@ -142,7 +142,7 @@ $availableFormations = db_all("SELECT id, name FROM formation ORDER BY id ASC");
 <body>
 <main-header></main-header>
 
-<main class="body formation-page">
+<main id="main-content" class="body formation-page">
 
     <div class="formation-header">
         <a href="?id=<?= $formationId ?>" class="back-link">🔄 Recharger la page</a>

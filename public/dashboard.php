@@ -2,8 +2,6 @@
 session_start();
 require_once 'call_bdd.php';
 
-
-
 $isLogged = isset($_SESSION['user']);
 $userId = $_SESSION['user']['id'] ?? null;
 
@@ -58,7 +56,7 @@ if ($isLogged && $userId) {
         $last_formation = $last_f_data ?: ['nom' => "Vous n'avez pas de formation complétée"];
         $last_activity = $last_activity ?: ['nom' => "Vous n'avez pas d'activité complétée"];
 
-        // --- GESTION DE LA PERSISTANCE DU REPORT (CORRIGÉ) ---
+        // --- GESTION DE LA PERSISTANCE DU REPORT ---
         $aujourdhui = date('Y-m-d');
         if (!isset($_SESSION['report_date']) || $_SESSION['report_date'] !== $aujourdhui) {
             $_SESSION['report'] = false;
@@ -75,7 +73,7 @@ if ($isLogged && $userId) {
                 $formationIds = array_column($formations, 'formation_id');
                 $placeholders = implode(',', array_fill(0, count($formationIds), '?'));
                 
-                // On récupère 'answer' pour que le JS puisse comparer
+                // On récupère 'answer' pour que le JS puisse comparé
                 $question = db_one("SELECT id, question, answer 
                                     FROM daily_question 
                                     WHERE formation_id IN ($placeholders) 
@@ -100,23 +98,24 @@ if ($isLogged && $userId) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Dashboard - Points et Activités</title>
-    <link rel="stylesheet" href="./assets/css/dashboard.css" />
-    <link rel="stylesheet" href="./assets/css/globals.css" />
-    <link rel="stylesheet" href="./assets/css/styleguide.css" />
-    <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
-    
     <script>
       window.IS_LOGGED = <?= $isLogged ? 'true' : 'false' ?>;
       window.QUESTION_DU_JOUR = <?= json_encode($question) ?>;
     </script>
     <script src="./assets/js/composents.js"></script>
     <script src="./assets/js/dashboard.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/globals.css" />
+    <link rel="stylesheet" href="./assets/css/styleguide.css" />
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css" />    
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
+    
+    
   </head>
   <body>
       <main-header></main-header>
 
-      <main>
+      <main id="main-content">
 
         <div id="popup-question" class="modal">
           <div class="modal-content">

@@ -69,7 +69,7 @@ function fmt_score($v): string { return number_format((float)$v, 1, ',', ' '); }
 <body>
 <main-header></main-header>
 
-<main class="body">
+<main id="main-content" class="body">
     <div class="bouton-recherche">
         <h1 class="text-wrapper-8" id="leaderboard-title">Classement des entreprises</h1>
 

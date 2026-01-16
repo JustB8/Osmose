@@ -70,8 +70,8 @@ header {
   outline-offset: 2px;
 }
 
-#bouton-noir-con,
-#bouton-noir-profil {
+#bouton-noir-profil,
+#bouton-noir-con {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -89,13 +89,13 @@ header {
   cursor: pointer;
 }
 
-#bouton-noir-con:hover,
-#bouton-noir-profil:hover {
+#bouton-noir-profil:hover,
+#bouton-noir:hover {
   background-color: var(--color-background-brand-hover);
 }
 
-#bouton-noir-con:focus,
-#bouton-noir-profil:focus {
+#bouton-noir-profil:focus,
+#bouton-noir:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
@@ -124,6 +124,7 @@ header {
     text-decoration: none;
 }
 
+#profil,
 #connexion_compte{
   color: white;
 }
