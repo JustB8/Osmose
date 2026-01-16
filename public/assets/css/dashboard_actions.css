@@ -36,11 +36,7 @@ main {
   font-weight: bold;
 }
 
-#action-1,
-#action-2,
-#action-3,
-#action-4,
-#action-5 {
+.action-check {
   appearance: none;
   width: 22px;
   height: 22px;
@@ -52,20 +48,12 @@ main {
   position: relative;
 }
 
-#action-1:checked,
-#action-2:checked,
-#action-3:checked,
-#action-4:checked,
-#action-5:checked {
+.action-check:checked {
   background-color: var(--color-background-positive-default);
   border-color: var(--color-background-positive-default);
 }
 
-#action-1:checked::after,
-#action-2:checked::after,
-#action-3:checked::after,
-#action-4:checked::after,
-#action-5:checked::after {
+.action-check:checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
