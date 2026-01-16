@@ -77,7 +77,7 @@
 
       <main-header></main-header>
 
-      <main>
+      <main id="main-content">
           <h1 id="Titre">Liste des actions</h1>
           <?php if ($nb_actions > 0 ): ?>
             <?php foreach ($allActions as $id => $data): ?>

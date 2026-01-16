@@ -62,7 +62,7 @@ $isLogged = isset($_SESSION['user']);
 <body>
     <main-header></main-header>
 
-    <main class="sitemap-container">
+    <main id="main-content" class="sitemap-container">
         <h1>Plan du site</h1>
         <p class="p">Retrouvez ici l'ensemble des pages disponibles sur la plateforme Osmose.</p>
 

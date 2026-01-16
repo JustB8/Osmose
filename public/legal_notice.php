@@ -13,7 +13,8 @@
 </head>
 <body>
     <main-header></main-header>
-    <div class="container">
+
+    <main id="main-content" class="container">
         <header>
             <h1>Mentions Légales</h1>
             <p class="last-update">Dernière mise à jour : 14-01-2026</p>
@@ -100,7 +101,7 @@
 
             </div>
         </section>
-    </div>
+</main>
     <main-footer></main-footer>
 </body>
 </html>

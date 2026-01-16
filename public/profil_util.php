@@ -267,7 +267,7 @@ $userLevel = (int)($user['user_level'] ?? 0);
 <body>
 <main-header></main-header>
 
-<main class="pu-page">
+<main id="main-content" class="pu-page">
     <div class="pu-top-actions">
         <a href="/dashboard.php" class="pu-btn secondary">⬅️ Dashboard</a>
         <a href="/formation_search.php" class="pu-btn secondary">Formations ➡️</a>

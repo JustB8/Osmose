@@ -152,96 +152,96 @@ $companies = db_all('SELECT id, name FROM company ORDER BY name');
 </head>
 
 <body>
-<main-header></main-header>
+    <main-header></main-header>
 
-<main>
-    <?php if ($form === 'register'): ?>
-        <section class="auth-section">
-            <h1>Création de compte</h1>
+    <main id="main-content">
+        <?php if ($form === 'register'): ?>
+            <section class="auth-section">
+                <h1>Création de compte</h1>
 
-            <?php if ($error): ?>
-                <p class="error"><?= htmlspecialchars($error) ?></p>
-            <?php endif; ?>
+                <?php if ($error): ?>
+                    <p class="error"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
 
-            <form method="post" novalidate>
-                <div class="form-group">
-                    <label for="name">Nom *</label>
-                    <input type="text" id="name" name="cre_name" required />
-                </div>
+                <form method="post" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nom *</label>
+                        <input type="text" id="name" name="cre_name" required />
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Adresse mail *</label>
-                    <input type="email" id="email" name="cre_email" required />
-                </div>
+                    <div class="form-group">
+                        <label for="email">Adresse mail *</label>
+                        <input type="email" id="email" name="cre_email" required />
+                    </div>
 
-                <div class="form-group">
-                    <label for="company_id">Entreprise *</label>
-                    <select id="company_id" name="company_id">
-                        <option value="">-- Choisir une entreprise --</option>
-                        <?php foreach ($companies as $c): ?>
-                            <option value="<?= (int)$c['id'] ?>">
-                                <?= htmlspecialchars($c['name']) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <small>Ou ajoutez-en une ci-dessous :</small>
-                </div>
+                    <div class="form-group">
+                        <label for="company_id">Entreprise *</label>
+                        <select id="company_id" name="company_id">
+                            <option value="">-- Choisir une entreprise --</option>
+                            <?php foreach ($companies as $c): ?>
+                                <option value="<?= (int)$c['id'] ?>">
+                                    <?= htmlspecialchars($c['name']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <small>Ou ajoutez-en une ci-dessous :</small>
+                    </div>
 
-                <div class="form-group">
-                    <label for="company_new">Ajouter une entreprise (optionnel)</label>
-                    <input type="text" id="company_new" name="company_new" placeholder="Nom de l’entreprise" />
-                </div>
+                    <div class="form-group">
+                        <label for="company_new">Ajouter une entreprise (optionnel)</label>
+                        <input type="text" id="company_new" name="company_new" placeholder="Nom de l’entreprise" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="password">Mot de passe *</label>
-                    <input type="password" id="password" name="cre_password" required />
-                </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe *</label>
+                        <input type="password" id="password" name="cre_password" required />
+                    </div>
 
-                <div class="form-group">
-                    <label for="password-confirm">Confirmation du mot de passe *</label>
-                    <input type="password" id="password-confirm" name="password-confirm" required />
-                </div>
+                    <div class="form-group">
+                        <label for="password-confirm">Confirmation du mot de passe *</label>
+                        <input type="password" id="password-confirm" name="password-confirm" required />
+                    </div>
 
-                <button type="submit" class="btn btn-primary">
-                    Créer un compte
-                </button>
-            </form>
+                    <button type="submit" class="btn btn-primary">
+                        Créer un compte
+                    </button>
+                </form>
 
-            <p>
-                <a href="?form=login">Vous avez déjà un compte ? Connectez-vous</a>
-            </p>
-        </section>
-    <?php else: ?>
-        <section class="auth-section">
-            <h1>Connexion</h1>
+                <p>
+                    <a href="?form=login">Vous avez déjà un compte ? Connectez-vous</a>
+                </p>
+            </section>
+        <?php else: ?>
+            <section class="auth-section">
+                <h1>Connexion</h1>
 
-            <?php if ($error): ?>
-                <p class="error"><?= htmlspecialchars($error) ?></p>
-            <?php endif; ?>
+                <?php if ($error): ?>
+                    <p class="error"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
 
-            <form method="post" novalidate>
-                <div class="form-group">
-                    <label for="email">Adresse mail *</label>
-                    <input type="email" id="email" name="co_email" required />
-                </div>
+                <form method="post" novalidate>
+                    <div class="form-group">
+                        <label for="email">Adresse mail *</label>
+                        <input type="email" id="email" name="co_email" required />
+                    </div>
 
-                <div class="form-group">
-                    <label for="password">Mot de passe *</label>
-                    <input type="password" id="password" name="co_password" required />
-                </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe *</label>
+                        <input type="password" id="password" name="co_password" required />
+                    </div>
 
-                <button type="submit" class="btn btn-primary">
-                    Connexion
-                </button>
-            </form>
+                    <button type="submit" class="btn btn-primary">
+                        Connexion
+                    </button>
+                </form>
 
-            <p>
-                <a href="?form=register">Vous n'avez pas de compte ? Créez-en un !</a>
-            </p>
-        </section>
-    <?php endif; ?>
-</main>
+                <p>
+                    <a href="?form=register">Vous n'avez pas de compte ? Créez-en un !</a>
+                </p>
+            </section>
+        <?php endif; ?>
+    </main>
 
-<main-footer></main-footer>
-</body>
+    <main-footer></main-footer>
+    </body>
 </html>

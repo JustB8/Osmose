@@ -18,7 +18,7 @@ session_start();
 <body class="body">
     <main-header></main-header>
 
-    <main class="container">
+    <main id="main-content" class="container">
         <article class="ppu-card">
             <header class="legal-header">
                 <h1>Déclaration d'accessibilité</h1>
