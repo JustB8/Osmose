@@ -141,7 +141,7 @@ $companies = db_all('SELECT id, name FROM company ORDER BY name');
     <title>Connexion / Création de compte</title>
     <link rel="stylesheet" href="./assets/css/globals.css" />
     <link rel="stylesheet" href="./assets/css/styleguide.css"/>
-    <link rel="stylesheet" href="assets/connexion.css" />
+    <link rel="stylesheet" href="./assets/css/connexion.css" />
     <link rel="stylesheet" href="./assets/css/header.css"/>
     <link rel="stylesheet" href="./assets/css/footer.css"/>
     <link rel="stylesheet" href="./assets/css/index.css" />
