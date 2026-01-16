@@ -98,12 +98,23 @@
       </main>
 
       <div id="action-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="modal-label"></h2>
-            <p id="modal-points"></p>
-            <p id="modal-desc"></p>
-        </div>
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button class="close-btn">&times;</button>
+                  <script>
+                      const modal = document.getElementById("action-modal");
+                      const closeBtn = document.querySelector(".close-btn");
+
+                      closeBtn.addEventListener("click", () => {
+                          modal.style.display = "none";
+                      });
+                  </script>
+              </div>
+
+              <h2 id="modal-label">Grosse bite</h2>
+              <p id="modal-points">petite bite</p>
+              <p id="modal-desc">12 cm</p>
+          </div>
       </div>
 
       <main-footer></main-footer>
