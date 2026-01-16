@@ -20,7 +20,7 @@ session_start();
 
     <main id="main-content" class="container">
         <article class="ppu-card">
-            <header class="legal-header">
+            <header>
                 <h1>Déclaration d'accessibilité</h1>
                 <p class="last-update">Établie le 14 janvier 2026</p>
             </header>
@@ -37,7 +37,6 @@ session_start();
                     <p>
                         Le site <strong>Osmose</strong> est <strong>non conforme</strong> avec le RGAA (Référentiel Général d'Amélioration de l'Accessibilité), car il n'existe aucun résultat d'audit de conformité valide.
                     </p>
-                    <p><small>Note : Dans le cadre d'un projet étudiant/développement, cette mention est obligatoire tant qu'un audit professionnel n'a pas été réalisé.</small></p>
                 </div>
             </section>
 

@@ -37,7 +37,7 @@
     --color-text-brand-on-brand-duplicate: var(
             --color-primitives-brand-100-duplicate
     );
-    --color-background-positive-default: var(--color-primitives-green-500);
+    --color-background-positive-default:#0e5831;
     --color-background-brand-tertiary: var(--color-primitives-brand-100);
     --color-background-brand-default: var(--color-primitives-brand-800);
     --color-background-default-default: var(--color-primitives-white-1000);
@@ -120,7 +120,7 @@ You can apply the theme on any DOM node, not just the `body`
     --color-text-brand-on-brand-duplicate: var(
             --color-primitives-brand-100-duplicate
     );
-    --color-background-positive-default: var(--color-primitives-green-500);
+    --color-background-positive-default: #0e5831;
     --color-background-brand-tertiary: var(--color-primitives-brand-100);
     --color-background-brand-default: var(--color-primitives-brand-800);
     --color-background-default-default: var(--color-primitives-white-1000);
@@ -154,7 +154,7 @@ You can apply the theme on any DOM node, not just the `body`
     --color-text-brand-on-brand-duplicate: var(
             --color-primitives-brand-900-duplicate
     );
-    --color-background-positive-default: var(--color-primitives-green-700);
+    --color-background-positive-default: #0e5831;
     --color-background-brand-tertiary: var(--color-primitives-brand-600);
     --color-background-brand-default: var(--color-primitives-brand-100);
     --color-background-default-default: var(--color-primitives-gray-900);
