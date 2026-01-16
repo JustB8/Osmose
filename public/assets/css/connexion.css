@@ -4,36 +4,7 @@
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 
-* {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-}
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--body-base-font-family, Inter, Arial, sans-serif), serif;
-    background-color: var(--color-background-default-default);
-    color: var(--color-text-default-default);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid #4a90e2;
-    outline-offset: 2px;
-}
 
 /* =========================================================
    DESIGN SYSTEM / TOKENS
