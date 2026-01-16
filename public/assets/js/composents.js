@@ -11,7 +11,7 @@ class MyHeader extends HTMLElement {
                 </ul>
             </nav>
             <div class="header">
-                <header>  
+                <header class="header-2">  
                     <div class="icon_container">
                         <a href="/index.php" class="logo-link">
                             <img id="site_logo" src="img/logo.svg" alt="Logo du site" />
@@ -39,7 +39,7 @@ class MyHeader extends HTMLElement {
                 </ul>
             </nav>
             <div class="header">
-                <header>  
+                <header class="header-2">  
                     <div class="icon_container">
                         <a href="/index.php" class="logo-link">
                             <img id="site_logo" src="img/logo.svg" alt="Logo du site" />

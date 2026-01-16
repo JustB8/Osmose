@@ -7,7 +7,7 @@
   position: relative;
 }
 
-header {
+.header-2 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
