@@ -1,17 +1,19 @@
 body {
   position: relative;
   width: 100%;
-  max-width: 1226px;
-  margin: 129px auto 0;
-  padding: 0 var(--size-space-800);
+  margin: 0 auto;
   flex: 1;
+}
+
+main {
+  padding: 0 var(--size-space-800);
 }
 
 #Titre{
   width: 100%;
   text-align: center;
   margin-bottom: 102px;
-  font-family: "Inter-Regular", Helvetica;
+  font-family: "Inter-Regular", Helvetica, serif;
   font-weight: 400;
   color: #000000;
   font-size: 32px;
@@ -25,7 +27,7 @@ body {
   gap: 12px;
   position: relative;
   margin-bottom: 23px;
-  padding : 5px;
+  padding : 10px;
 }
 
 .action:hover {
@@ -75,7 +77,7 @@ body {
 }
 
 .action-name {
-  font-family: var(--single-line-body-base-font-family);
+  font-family: var(--single-line-body-base-font-family), serif;
   font-weight: var(--single-line-body-base-font-weight);
   color: #000000;
   font-size: var(--single-line-body-base-font-size);
@@ -88,7 +90,7 @@ body {
 }
 
 .action-points {
-  font-family: "Inter-Regular", Helvetica;
+  font-family: "Inter-Regular", Helvetica, serif;
   font-weight: 400;
   color: #858181;
   font-size: 16px;
@@ -108,9 +110,23 @@ body {
 }
 
 .modal-content {
-    background-color: rgb(11, 197, 51);
+    background-color: var( --color-primitives-green-500-duplicate );
     margin: 15% auto;
     padding: 20px;
     width: 50%;
     border-radius: 8px;
+    color: white;
+}
+
+.modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.modal-content .modal-header .close-btn {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
 }

@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.header-2 {
+header {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -25,25 +25,7 @@
   border-color: var(--color-border-default-default);
 }
 
-.block {
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.Osmose {
-  display: flex;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  text-decoration: none;
-}
-
-.icon {
+#site_logo {
     max-width: 85%;
     height: auto;
     display: block;
@@ -58,7 +40,8 @@
   flex: 1;
 }
 
-.button {
+#bouton-blanc-crea,
+#bouton-blanc-deco {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -76,16 +59,19 @@
   cursor: pointer;
 }
 
-.button:hover {
+#bouton-blanc-crea:hover,
+#bouton-blanc-deco:hover {
   background-color: var(--color-background-neutral-tertiary-hover);
 }
 
-.button:focus {
+#bouton-blanc-crea:focus,
+#bouton-blanc-deco:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
 }
 
-.div {
+#bouton-noir-con,
+#bouton-noir-profil {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
@@ -103,27 +89,15 @@
   cursor: pointer;
 }
 
-.div:hover {
+#bouton-noir-con:hover,
+#bouton-noir-profil:hover {
   background-color: var(--color-background-brand-hover);
 }
 
-.div:focus {
+#bouton-noir-con:focus,
+#bouton-noir-profil:focus {
   outline: 2px solid var(--color-border-brand-default);
   outline-offset: 2px;
-}
-
-.con-profil {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: var(--single-line-body-base-font-family), serif;
-  font-weight: var(--single-line-body-base-font-weight);
-  color: var(--color-text-brand-on-brand);
-  font-size: var(--single-line-body-base-font-size);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  white-space: nowrap;
-  font-style: var(--single-line-body-base-font-style);
 }
 
 .icon_container {
@@ -150,6 +124,51 @@
     text-decoration: none;
 }
 
-.button-2{
+#connexion_compte{
   color: white;
+}
+
+.skip-links__link {
+    border: .0625rem solid #000000;
+    font-weight: bold;
+    display: block;
+    font-size: .75rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    text-decoration: none;
+}
+.skip-links {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+.visually-hidden-focusable:focus-visible, 
+.visually-hidden-focusable:focus-within {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    background-color: #000000; /* Fond noir pour être bien vu */
+    color: #fff;            /* Texte blanc */
+    padding: 5px;
+    font-weight: bold;      /* Texte en gras */
+    z-index: 2000;          /* Passe par-dessus le header */
+    border-radius : 5px;
+}
+
+.visually-hidden-focusable:not(:focus-visible,:focus-within) {
+    position: absolute !important;
+    top: -1000px;
+}
+
+.logo-link:focus-visible {
+    outline: 3px solid var(--color-border-brand-default);
+    outline-offset: -4px;
+    border-radius: 50%; 
 }
