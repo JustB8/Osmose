@@ -110,11 +110,7 @@ if ($isLogged && $userId) {
     
   </head>
   <body>
-      <main-header></main-header>
-
-      <main id="main-content">
-
-        <div id="popup-question" class="modal">
+      <div id="popup-question" class="modal">
           <div class="modal-content">
             <h2 id="popup-title">Question du jour</h2>
             <p id="popup-libelle"></p>
@@ -136,6 +132,10 @@ if ($isLogged && $userId) {
             </form>
           </div>
         </div>
+      
+      <main-header></main-header>
+
+      <main id="main-content">
 
         <div class="pu-top-actions">
             <a href="/formation_search.php" class="pu-btn secondary">⬅️ Formations </a>
