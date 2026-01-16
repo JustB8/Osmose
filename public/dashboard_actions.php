@@ -82,7 +82,7 @@
           <?php if ($nb_actions > 0 ): ?>
             <?php foreach ($allActions as $id => $data): ?>
                 <div class="action" data-id="<?= $id ?>">
-                      <input type="checkbox"
+                      <input class = "action" type="checkbox"
                               id="action-<?= $id ?>"
                               <?= in_array($id, $userActions) ? 'checked' : '' ?>
                               disabled />
