@@ -10,7 +10,6 @@ main {
 }
 .text-activity-formation {
   font-size: 1.7rem; /* Taille plus grande (environ 19px) */
-  font-weight: 500;   /* Optionnel : rend le texte un peu plus épais */
   color: #333;
   font-weight: bold;
 }
@@ -113,10 +112,16 @@ h3{
   width: 100%; 
   padding: 8px; 
   margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: var(--font-base), serif;
 }
 
 #modal-footer-charg {
   display : none;
+}
+
+#form-question .modal-footer .btn-valider {
+    margin-top: 10px;
 }
 
 .pu-top-actions {
@@ -144,7 +149,14 @@ h3{
     margin-top: -2px;
 }
 
-.dash_action {
-  border: 1px solid #000000;
+.dash_action, .pu-btn{
+  border: 1px solid black;
   border-radius: 50px;
+  color: black;
+  padding: 10px;
+}
+
+.dash_action:hover, .pu-btn:hover {
+    color: white;
+    background-color: black;
 }
