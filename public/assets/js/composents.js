@@ -6,7 +6,7 @@ class MyHeader extends HTMLElement {
                 <ul class="skip-links">
                     <li><a href="#bouton-noir-profil" class="skip-links__link visually-hidden-focusable">Passer à mon profil</a></li>
                     <li><a href="#bouton-blanc-deco" class="skip-links__link visually-hidden-focusable">Passer à la déconnexion</a></li>
-                    <li><a href="#main-content" class="skip-links__link visually-hidden-focusable">Passer au contenu principal</a></li>
+                    <li><a href="#id="main-content" class="skip-links__link visually-hidden-focusable">Passer au contenu principal</a></li>
                     <li><a href="#logo-link-footer" class="skip-links__link visually-hidden-focusable">Passer au bas de page</a></li>
                 </ul>
             </nav>
