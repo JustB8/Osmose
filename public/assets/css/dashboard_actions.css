@@ -92,7 +92,7 @@ main {
 .action-points {
   font-family: "Inter-Regular", Helvetica, serif;
   font-weight: 400;
-  color: #858181;
+  color: #585555;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 16px;
@@ -110,7 +110,7 @@ main {
 }
 
 .modal-content {
-    background-color: var( --color-primitives-green-500-duplicate );
+    background-color: #0b6033;
     margin: 15% auto;
     padding: 20px;
     width: 50%;
