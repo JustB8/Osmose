@@ -56,7 +56,7 @@ if ($isLogged && $userId) {
         $last_formation = $last_f_data ?: ['nom' => "Vous n'avez pas de formation complétée"];
         $last_activity = $last_activity ?: ['nom' => "Vous n'avez pas d'activité complétée"];
 
-        // --- GESTION DE LA PERSISTANCE DU REPORT (CORRIGÉ) ---
+        // --- GESTION DE LA PERSISTANCE DU REPORT ---
         $aujourdhui = date('Y-m-d');
         if (!isset($_SESSION['report_date']) || $_SESSION['report_date'] !== $aujourdhui) {
             $_SESSION['report'] = false;
@@ -73,7 +73,7 @@ if ($isLogged && $userId) {
                 $formationIds = array_column($formations, 'formation_id');
                 $placeholders = implode(',', array_fill(0, count($formationIds), '?'));
                 
-                // On récupère 'answer' pour que le JS puisse comparer
+                // On récupère 'answer' pour que le JS puisse comparé
                 $question = db_one("SELECT id, question, answer 
                                     FROM daily_question 
                                     WHERE formation_id IN ($placeholders) 
