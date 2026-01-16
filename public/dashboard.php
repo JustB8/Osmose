@@ -110,8 +110,32 @@ if ($isLogged && $userId) {
   </head>
   <body>
       <main-header></main-header>
-      
+
       <main>
+
+        <div id="popup-question" class="modal">
+          <div class="modal-content">
+            <h2 id="popup-title">Question du jour</h2>
+            <p id="popup-libelle"></p>
+
+            <div id="feedback-message"></div>
+
+            <form id="form-question" method="POST">
+              <input type="hidden" name="question_id" id="popup-question-id">
+              <div id="reponses-container">
+                <input type="text" id="user-answer" placeholder="Votre réponse ici..." required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="btn-valider-js" class="btn-valider pu-btn">Valider ma réponse</button>
+                <button type="button" id="btn-close-popup" class="btn-valider pu-btn">Plus tard</button>
+              </div>
+              <div id="modal-footer-charg">
+                <p> Chargement... </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <div class="pu-top-actions">
             <a href="/formation_search.php" class="pu-btn secondary">⬅️ Formations </a>
             <a href="/profil_util.php" class="pu-btn secondary">Profil ➡️</a>            
@@ -144,29 +168,6 @@ if ($isLogged && $userId) {
                 <a href="/dashboard_actions.php" >Consulter les actions réalisées</a>
             </div>
         </article>
-
-        <div id="popup-question" class="modal">
-          <div class="modal-content">
-              <h2 id="popup-title">Question du jour</h2>
-              <p id="popup-libelle"></p>
-              
-              <div id="feedback-message"></div>
-
-              <form id="form-question" method="POST">
-                  <input type="hidden" name="question_id" id="popup-question-id">
-                  <div id="reponses-container">
-                      <input type="text" id="user-answer" placeholder="Votre réponse ici..." required>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" id="btn-valider-js" class="btn-valider">Valider ma réponse</button>
-                      <button type="button" id="btn-close-popup">Plus tard</button>
-                  </div>
-                  <div id="modal-footer-charg">
-                    <p> Chargement... </p>
-                  </div>
-              </form>
-          </div>
-        </div>
 
         <div id="reminder-modal" >
             <p>Question en attente</p>

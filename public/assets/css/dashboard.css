@@ -112,10 +112,16 @@ h3{
   width: 100%; 
   padding: 8px; 
   margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: var(--font-base), serif;
 }
 
 #modal-footer-charg {
   display : none;
+}
+
+#form-question .modal-footer .btn-valider {
+    margin-top: 10px;
 }
 
 .pu-top-actions {
@@ -153,12 +159,4 @@ h3{
 .dash_action:hover, .pu-btn:hover {
     color: white;
     background-color: black;
-}
-/*
-.modal {
-    display: flex;
-}
-*/
-#user-answer {
-    border-radius: 10px;
 }
