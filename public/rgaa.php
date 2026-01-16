@@ -46,7 +46,6 @@ session_start();
                     <p>Les contenus suivants ne sont pas accessibles pour les raisons suivantes :</p>
                     <ul>
                         <li>Absence d'alternatives textuelles sur certaines images décoratives.</li>
-                        <li>Certains contrastes de couleurs (notamment les badges) peuvent être insuffisants.</li>
                         <li>Navigation au clavier non optimisée sur les graphiques radar.</li>
                     </ul>
                 </div>
