@@ -80,7 +80,7 @@
 .activity-content h2 {
     margin-top: 0;
     font-size: 1.2rem;
-    color: #333;
+    color: #504e4e;
 }
 
 .activity-body {
@@ -106,7 +106,7 @@
 }
 .activity-card.current .activity-status-icon {
     background-color: #e3f2fd;
-    color: #2196f3;
+    color: #004f8f;
 }
 
 .activity-card.locked {
@@ -114,11 +114,11 @@
     background-color: #f4f4f4;
 }
 .activity-card.locked .activity-status-icon {
-    background-color: #ddd;
+    background-color: #171717;
     color: #888;
 }
 .activity-card.locked h2 {
-    color: #888;
+    color: #504e4e;
 }
 
 /* Quiz form */
